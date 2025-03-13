@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Mobi-Comm - Guest Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideDown 1s ease-in-out;
+            height: 50% !important;
+        }
+
+        .navbar-brand img {
+            max-width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+            color: #ff6b6b !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://i.pinimg.com/736x/2c/cf/e4/2ccfe4ce9c922a486b0963624b714e09.jpg') no-repeat center center;
+            background-size: cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.4s ease;
+            animation: bounceIn 2s ease-in-out;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(45deg, #f06595, #ff6b6b);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.6);
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+        }
+
+        .carousel-inner .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-card .card-title {
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        .stat-card p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .testimonial-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial-card h5 {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(45deg, #DBD6F4, #78748d);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            animation: shine 5s infinite;
+        }
+
+        .cta-section .btn-custom {
+            animation: pulse 2s infinite;
+        }
+
+        /* Footer */
+        .footer {
+
+            color: white;
+            padding: 3rem 0;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer a {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ff6b6b;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+
+            50% {
+                transform: translateX(100%) rotate(30deg);
+            }
+
+            100% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-primary">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-info">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 100px;"></a> <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlock Seamless Connectivity with Mobi-Comm</h1>
+            <p>Recharge Fast. Save Big. Stay Connected.</p>
+            <a href="login.html" class="btn btn-custom me-3">Get Started Now</a>
+            <a href="#features" class="btn btn-outline-light">Discover More</a>
+        </div>
+    </section>
+
+    <!-- Features Section with Carousel -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #ff6b6b; font-weight: 700;">Why Choose Mobi-Comm</h2>
+            <div id="featuresCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card feature-card">
+                                    <img src="https://tse2.mm.bing.net/th?id=OIP.2I67FmLicXtX9bO485dKAQHaE8&pid=Api&P=0&h=220"
+                                        class="card-img-top" alt="Instant Recharge">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lightning-Fast Recharges</h5>
+                                        <p class="card-text">Top up your mobile in seconds with our intuitive platform.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card feature-card">
+                                    <img src="https://i.pinimg.com/736x/6d/80/2f/6d802fb654a20a692ac34a5d37dadf80.jpg"
+                                        class="card-img-top" alt="Exclusive Offers">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Unbeatable Offers</h5>
+                                        <p class="card-text">Save more with exclusive deals and personalized plans.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card feature-card">
+                                    <img src="https://i.pinimg.com/736x/65/57/eb/6557eb9fd590c0e9fe274d40998d4a51.jpg"
+                                        class="card-img-top" alt="Support">
+                                    <div class="card-body">
+                                        <h5 class="card-title">24/7 Support</h5>
+                                        <p class="card-text">Help is just a click away, anytime you need it.Your
+                                            Experience is our priority.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more carousel items if needed -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #ff6b6b; font-weight: 700;">Our Achievements</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="userCount">1M+</h3>
+                        <p>Happy Users</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3 id="rechargeCount">5M+</h3>
+                        <p>Recharges Processed</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3 id="ratingCount">4.8</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #ff6b6b; font-weight: 700;">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User 1">
+                        <p>"Mobi-Comm made recharging so easy and fast! The offers are unbeatable."</p>
+                        <h5>Priya Sharma</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User 2">
+                        <p>"I love the support team—they’re always there when I need them."</p>
+                        <h5>Rahul Verma</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="User 3">
+                        <p>"The best platform for mobile recharges. Highly recommended!"</p>
+                        <h5>Anita Patel</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br><br><br>
+    <!-- Call to Action Section -->
+    <section class="cta-section text-center">
+        <div class="container">
+            <h3 class="mb-4" style="font-weight: 700;">Join Millions of Happy Users!</h3>
+            <p class="lead mb-4">Experience the ultimate mobile prepaid service with Mobi-Comm. Log in now to recharge,
+                explore plans, and enjoy exclusive benefits!</p>
+            <a href="login.html" class="btn btn-custom btn-lg">Start Your Journey</a>
+        </div>
+    </section>
+    <br><br><br><br><br>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer bg-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Mobi-Comm</h5>
+                    <p>Your trusted partner for fast, reliable, and affordable mobile prepaid solutions across India.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: <a href="mailto:support@payyourphonebill.com">support@payyourphonebill.com</a></p>
+                    <p>Phone: <a href="tel:+911234567890">+91-123-456-7890</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-4">© 2025 Mobi-Comm. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Stats Counter Animation
+        function animateCounter(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let current = start;
+            let range = end - start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(() => {
+                current += increment;
+                obj.textContent = current + (id === 'ratingCount' ? '' : '+');
+                if (current === end) {
+                    clearInterval(timer);
+                    if (id === 'ratingCount') obj.textContent = '4.8';
+                }
+            }, stepTime);
+        }
+
+        // Start counters when section is in view
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                animateCounter('userCount', 0, 1000000, 2000);
+                animateCounter('rechargeCount', 0, 5000000, 2000);
+                animateCounter('ratingCount', 0, 4.8, 2000);
+                observer.unobserve(statsSection);
+            }
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+    </script>
+</body>
+
+</html>

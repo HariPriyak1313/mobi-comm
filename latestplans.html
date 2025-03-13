@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Recharge Plans - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        /* Main Content Styling */
+        .container.mt-4 {
+            padding: 20px;
+        }
+
+        h2.text-info {
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        #searchBar {
+            border-radius: 25px;
+            padding: 15px;
+            border: 2px solid #17a2b8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        #searchBar:focus {
+            border-color: #138496;
+            box-shadow: 0 0 20px rgba(23, 162, 184, 0.5);
+            transform: scale(1.02);
+        }
+
+        /* Plan Card Styling */
+        .plan-card {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            animation: cardFadeIn 0.5s ease-out forwards;
+            animation-delay: calc(0.1s * var(--card-order));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: contain;
+            width: 100%;
+            border-bottom: 2px solid #dc3545;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            color: #dc3545;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-title {
+            transform: scale(1.1);
+        }
+
+        .card-text {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .text-muted {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .btn-recharge {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-recharge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+        }
+
+        /* Footer Styling */
+        .footer-links {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-links::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            animation: shine 6s infinite;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            margin: 0 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.3);
+        }
+
+        .footer-links form input {
+            border-radius: 20px;
+            padding: 12px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links form input:focus {
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+
+        .footer-links form button {
+            border-radius: 20px;
+            padding: 12px 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+
+            50% {
+                transform: translateX(100%) rotate(30deg);
+            }
+
+            100% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-primary">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 100px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="HomePage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="latestplans.html">Latest Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="popular plans.html">Popular Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Faq's.html">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Recharge Plans.html">Recharge</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h2 class="text-center text-info mb-4">Latest Recharge Plans</h2>
+        <input type="text" id="searchBar" class="form-control mb-4" placeholder="Search plans...">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="plans-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-links bg-info text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="fw-bold">MobiComm</h5>
+                    <p>Your trusted online mobile recharge service, providing fast and secure transactions.</p>
+                    <img src="Asserts/LogoPic.png" alt="Company Logo" style="max-width: 120px;">
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="HomePage.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="latestplans.html" class="text-white text-decoration-none">Latest Plans</a></li>
+                        <li><a href="popular plans.html" class="text-white text-decoration-none">Popular Plans</a></li>
+                        <li><a href="Faq's.html" class="text-white text-decoration-none">FAQ's</a></li>
+                        <li><a href="Recharge Plans.html" class="text-white text-decoration-none">Recharge</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Customer Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Track My Recharge</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Report an Issue</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Stay Updated</h5>
+                    <p>Subscribe for exclusive offers & new recharge plans.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-warning">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <h5 class="fw-bold mt-3">We Accept</h5>
+                    <div class="d-flex">
+                        <img src="Asserts/visa.png" alt="Visa" width="30" height="30">
+                        <img src="Asserts/mastercard.png" alt="Mastercard" width="30" height="30">
+                        <img src="Asserts/Rupay.png" alt="RuPay" width="30" height="30">
+                        <img src="Asserts/google-pay.png" alt="Google Pay" width="30" height="30">
+                        <img src="Asserts/paytm.png" alt="Paytm" width="30" height="30">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light">
+            <div class="row text-center">
+                <div class="col">
+                    <p class="mb-0">© 2025 MobiComm. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allPlans = [];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://localhost:3000/plans')
+                .then(response => response.json())
+                .then(data => {
+                    allPlans = data.filter(plan => plan.category === 'latest');
+                    displayPlans(allPlans);
+
+                    document.getElementById('searchBar').addEventListener('keyup', function () {
+                        let filter = this.value.toLowerCase();
+                        let filteredPlans = allPlans.filter(plan =>
+                            plan.name.toLowerCase().includes(filter) ||
+                            plan.description.toLowerCase().includes(filter)
+                        );
+                        displayPlans(filteredPlans);
+                    });
+                })
+                .catch(error => console.error("Error loading plans from JSON server:", error));
+        });
+
+        function displayPlans(plans) {
+            let container = document.getElementById('plans-container');
+            container.innerHTML = "";
+            plans.forEach((plan, index) => {
+                let card = `
+                    <div class="col plan-card" style="--card-order: ${index};">
+                        <div class="card shadow-sm">
+                            <img src="${plan.image}" class="card-img-top" alt="${plan.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${plan.name}</h5>
+                                <p class="card-text">${plan.description}</p>
+                                <p class="text-muted">Price: ₹${plan.price} | Data: ${plan.data} | Validity: ${plan.validity}</p>
+                                <button class="btn btn-danger btn-recharge" onclick="rechargePlan('${plan.id}')">Recharge</button>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML += card;
+            });
+        }
+
+        async function rechargePlan(planId) {
+            const userId = localStorage.getItem('userId') || 1;
+            try {
+                const planResponse = await fetch(`http://localhost:3000/plans/${planId}`);
+                if (!planResponse.ok) throw new Error("Failed to fetch plan");
+                const plan = await planResponse.json();
+
+                const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+                if (!userResponse.ok) throw new Error("Failed to fetch user");
+                const user = await userResponse.json();
+
+                const newRecharge = {
+                    amount: plan.price,
+                    plan: `${plan.data}, ${plan.validity}`,
+                    date: new Date().toISOString().split('T')[0]
+                };
+                user.rechargeHistory.push(newRecharge);
+
+                const updateResponse = await fetch(`http://localhost:3000/users/${userId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                });
+
+                if (updateResponse.ok) {
+                    const features = plan.features ? plan.features.join(',') : '';
+                    const url = `payment.html?name=${encodeURIComponent(plan.name)}&price=${plan.price}&data=${encodeURIComponent(plan.data)}&validity=${encodeURIComponent(plan.validity)}&calls=${encodeURIComponent(plan.calls || 'Unlimited')}&sms=${encodeURIComponent(plan.sms || '100/day')}&features=${encodeURIComponent(features)}&userId=${userId}`;
+                    window.location.href = url;
+                } else {
+                    throw new Error('Failed to update recharge history');
+                }
+            } catch (error) {
+                console.error("Error processing recharge:", error);
+                alert("Error processing recharge. Please try again.");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            height: 90px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand img {
+            border-radius: 50%;
+            max-height: 90px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            transition: width 0.5s;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .profile img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar a {
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #343a40;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 30px;
+            transition: margin-left 0.5s;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .expiring-soon-table,
+        .expired-table,
+        .recharge-history-table,
+        .recent-recharges-table {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .expiring-soon-table thead {
+            background: linear-gradient(45deg, #ff4c4c, #ff6b6b);
+            color: white;
+        }
+
+        .expired-table thead {
+            background: linear-gradient(45deg, #dc3545, #e4606d);
+            color: white;
+        }
+
+        .recharge-history-table thead {
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            color: white;
+        }
+
+        .recent-recharges-table thead {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            color: white;
+        }
+
+        .table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff, #f9f9fb);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-card i {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .stats-card h5 {
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        .stats-card p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar bg-primary">
+        <div class="profile text-center">
+            <img src="Asserts/prepaid(1).jpg" alt="Profile Picture" class="img-fluid mb-2">
+            <h5 id="adminName">Hari Priya</h5>
+            <p id="totalEarnings">Total Earnings: $0.00</p>
+        </div>
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="users.html" class="active"><i class="fas fa-users"></i> User Management</a>
+        <a href="recharge_management.html"><i class="fas fa-mobile-alt"></i> Recharge Management</a>
+        <a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="admin_settings.html"><i class="fas fa-cogs"></i> Settings</a>
+    </div>
+
+    <div class="content">
+        <nav class="navbar navbar-expand-lg bg-info">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 100px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Subscribers with Plans Expiring Soon</h2>
+                    <div class="card mb-4">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered expiring-soon-table mb-0" id="expiringSoonTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Current Plan</th>
+                                        <th>Expiry Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>Subscribers with Expired Plans</h2>
+                    <div class="card mb-4">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered expired-table mb-0" id="expiredTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Last Plan</th>
+                                        <th>Expired On</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2 id="rechargeHistoryTitle" style="display: none;">Recharge History</h2>
+                    <div class="card" id="rechargeHistoryCard" style="display: none;">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered recharge-history-table mb-0" id="rechargeHistoryTable">
+                                <thead>
+                                    <tr>
+                                        <th>Plan Name</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Mode of Payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>User Statistics</h2>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-users"></i>
+                        <h5>Total Users</h5>
+                        <p id="totalUsers">0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h5>Total Recharges</h5>
+                        <p id="totalRecharges">0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h5>Expiring Soon</h5>
+                        <p id="expiringSoonCount">0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-clock"></i>
+                        <h5>Expired Plans</h5>
+                        <p id="expiredCount">0</p>
+                    </div>
+
+                    <h2>Recent Recharges</h2>
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered recent-recharges-table mb-0" id="recentRechargesTable">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Plan</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Check admin authentication
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('userRole') || localStorage.getItem('userRole') !== 'admin') {
+                window.location.href = 'login.html';
+            } else {
+                fetchData();
+            }
+        });
+
+        let allUsers = [];
+        let allRecharges = [];
+
+        // Fetch data from db.json
+        async function fetchData() {
+            try {
+                const usersResponse = await fetch('http://localhost:3000/users');
+                allUsers = await usersResponse.json();
+
+                // Aggregate recharge data
+                allRecharges = [];
+                allUsers.forEach(user => {
+                    user.rechargeHistory.forEach(recharge => {
+                        allRecharges.push({
+                            userId: user.id,
+                            userName: user.name,
+                            amount: recharge.amount,
+                            plan: recharge.plan,
+                            date: recharge.date
+                        });
+                    });
+                });
+
+                updateAdminProfile();
+                updateExpiringSoon();
+                updateExpired();
+                updateStats();
+                updateRecentRecharges();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.querySelector('.container-fluid').innerHTML = '<p class="text-danger text-center">Failed to load user data.</p>';
+            }
+        }
+
+        // Update admin profile in sidebar
+        function updateAdminProfile() {
+            const admin = allUsers.find(user => user.role === 'admin') || { name: 'Hari Priya', rechargeHistory: [] };
+            document.getElementById('adminName').textContent = admin.name;
+            const totalEarnings = allUsers.reduce((sum, user) => {
+                return sum + (user.rechargeHistory || []).reduce((acc, recharge) => acc + recharge.amount, 0);
+            }, 0);
+            document.getElementById('totalEarnings').textContent = `Total Earnings: $${totalEarnings.toFixed(2)}`;
+        }
+
+        // Calculate days difference
+        function getDaysDifference(dateStr) {
+            const today = new Date();
+            const targetDate = new Date(dateStr);
+            const diffTime = targetDate - today;
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        // Update expiring soon table
+        function updateExpiringSoon() {
+            const tbody = document.getElementById('expiringSoonTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            const expiringUsers = allUsers.filter(user => {
+                if (!user.planExpiry) {
+                    const lastRecharge = user.rechargeHistory && user.rechargeHistory.length > 0 ? user.rechargeHistory[user.rechargeHistory.length - 1] : null;
+                    if (!lastRecharge) return false;
+                    const validityDays = parseInt(lastRecharge.plan.split(', ')[1]) || 0;
+                    const rechargeDate = new Date(lastRecharge.date);
+                    const expiryDate = new Date(rechargeDate.setDate(rechargeDate.getDate() + validityDays));
+                    user.planExpiry = expiryDate.toISOString().split('T')[0];
+                }
+                const daysLeft = getDaysDifference(user.planExpiry);
+                return daysLeft >= 0 && daysLeft <= 3;
+            });
+
+            expiringUsers.forEach(user => {
+                const lastRecharge = user.rechargeHistory && user.rechargeHistory.length > 0 ? user.rechargeHistory[user.rechargeHistory.length - 1].plan : 'N/A';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.phone || 'N/A'}</td>
+                    <td>${lastRecharge}</td>
+                    <td>${user.planExpiry}</td>
+                `;
+                row.addEventListener('click', () => showRechargeHistory(user));
+                tbody.appendChild(row);
+            });
+        }
+
+        // Update expired plans table
+        function updateExpired() {
+            const tbody = document.getElementById('expiredTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            const expiredUsers = allUsers.filter(user => {
+                if (!user.planExpiry) {
+                    const lastRecharge = user.rechargeHistory && user.rechargeHistory.length > 0 ? user.rechargeHistory[user.rechargeHistory.length - 1] : null;
+                    if (!lastRecharge) return false;
+                    const validityDays = parseInt(lastRecharge.plan.split(', ')[1]) || 0;
+                    const rechargeDate = new Date(lastRecharge.date);
+                    const expiryDate = new Date(rechargeDate.setDate(rechargeDate.getDate() + validityDays));
+                    user.planExpiry = expiryDate.toISOString().split('T')[0];
+                }
+                const daysLeft = getDaysDifference(user.planExpiry);
+                return daysLeft < 0;
+            });
+
+            expiredUsers.forEach(user => {
+                const lastRecharge = user.rechargeHistory && user.rechargeHistory.length > 0 ? user.rechargeHistory[user.rechargeHistory.length - 1].plan : 'N/A';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.phone || 'N/A'}</td>
+                    <td>${lastRecharge}</td>
+                    <td>${user.planExpiry}</td>
+                `;
+                row.addEventListener('click', () => showRechargeHistory(user));
+                tbody.appendChild(row);
+            });
+        }
+
+        // Show recharge history for selected user
+        function showRechargeHistory(user) {
+            const historyTitle = document.getElementById('rechargeHistoryTitle');
+            const historyCard = document.getElementById('rechargeHistoryCard');
+            const tbody = document.getElementById('rechargeHistoryTable').getElementsByTagName('tbody')[0];
+
+            historyTitle.textContent = `Recharge History for ${user.name}`;
+            historyTitle.style.display = 'block';
+            historyCard.style.display = 'block';
+            tbody.innerHTML = '';
+
+            if (!user.rechargeHistory || user.rechargeHistory.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No recharge history available.</td></tr>';
+            } else {
+                user.rechargeHistory.forEach(recharge => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${recharge.plan}</td>
+                        <td>${recharge.date}</td>
+                        <td>₹${recharge.amount}</td>
+                        <td>${recharge.modeOfPayment || 'Online'}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            historyCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Update user statistics
+        function updateStats() {
+            document.getElementById('totalUsers').textContent = allUsers.length;
+            document.getElementById('totalRecharges').textContent = allRecharges.length;
+            document.getElementById('expiringSoonCount').textContent = allUsers.filter(user => {
+                const daysLeft = getDaysDifference(user.planExpiry);
+                return daysLeft >= 0 && daysLeft <= 3;
+            }).length;
+            document.getElementById('expiredCount').textContent = allUsers.filter(user => {
+                const daysLeft = getDaysDifference(user.planExpiry);
+                return daysLeft < 0;
+            }).length;
+        }
+
+        // Update recent recharges table
+        function updateRecentRecharges() {
+            const tbody = document.getElementById('recentRechargesTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            const recentRecharges = allRecharges.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+            recentRecharges.forEach(recharge => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${recharge.userName}</td>
+                    <td>${recharge.plan}</td>
+                    <td>${recharge.date}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+
+</html>

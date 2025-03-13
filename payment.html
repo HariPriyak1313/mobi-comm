@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            height: 50% !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .container {
+            padding: 40px 20px;
+        }
+
+        .plan-summary {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #17a2b8;
+        }
+
+        .plan-summary h3 {
+            color: #17a2b8;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-summary p {
+            color: #444;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-summary p i {
+            color: #ff4c4c;
+            margin-right: 10px;
+        }
+
+        .plan-summary .total {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff4c4c;
+            margin-top: 20px;
+        }
+
+        .payment-options {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-right: 4px solid #17a2b8;
+        }
+
+        .payment-options h3 {
+            color: #17a2b8;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background: linear-gradient(45deg, #17a2b8, #00d4ff);
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+
+        .payment-option img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .payment-option span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .payment-form-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .payment-form {
+            display: none;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            /* Added spacing between forms */
+        }
+
+        .payment-form.active {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: #444;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 8px;
+            border: 1px solid #17a2b8;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .card-details {
+            grid-template-columns: 3fr 1fr 1fr;
+        }
+
+        .submit-payment {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-payment:hover {
+            background: #00d4ff;
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border: 3px solid #17a2b8;
+        }
+
+        .success-message i {
+            color: #17a2b8;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .success-message h4 {
+            color: #17a2b8;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        @media (max-width: 767px) {
+
+            .plan-summary,
+            .payment-options {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-primary">
+    <nav class="navbar navbar-expand-lg  bg-info">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 100px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="HomePage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="latestplans.html">Latest Plans</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="popular plans.html">Popular Recharge
+                            Plans</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="Faq's.html">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="Recharge Plans.html">Recharge</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="plan-summary">
+                    <h3>Selected Plan</h3>
+                    <p><i class="fas fa-tag"></i><span id="planName"></span></p>
+                    <p><i class="fas fa-rupee-sign"></i>Price: ₹<span id="planPrice"></span></p>
+                    <p><i class="fas fa-database"></i>Data: <span id="planData"></span></p>
+                    <p><i class="fas fa-calendar-alt"></i>Validity: <span id="planValidity"></span></p>
+                    <p><i class="fas fa-phone"></i>Calls: <span id="planCalls"></span></p>
+                    <p><i class="fas fa-sms"></i>SMS: <span id="planSMS"></span></p>
+                    <p id="planFeatures"><i class="fas fa-gift"></i><span></span></p>
+                    <div class="total">Total: ₹<span id="planTotal"></span></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="payment-options">
+                    <h3>Select Payment Method</h3>
+                    <div class="payment-option" data-method="credit-card">
+                        <img src="Asserts/credit-card.png" alt="Credit Card">
+                        <span>Credit/Debit Card</span>
+                    </div>
+                    <div class="payment-option" data-method="net-banking">
+                        <img src="Asserts/bank.png" alt="Net Banking">
+                        <span>Net Banking</span>
+                    </div>
+                    <div class="payment-option" data-method="visa">
+                        <img src="Asserts/visa.png" alt="Visa">
+                        <span>Visa</span>
+                    </div>
+                    <div class="payment-option" data-method="mastercard">
+                        <img src="Asserts/mastercard.png" alt="Mastercard">
+                        <span>Mastercard</span>
+                    </div>
+                    <div class="payment-option" data-method="rupay">
+                        <img src="Asserts/Rupay.png" alt="RuPay">
+                        <span>RuPay</span>
+                    </div>
+                    <div class="payment-option" data-method="google-pay">
+                        <img src="Asserts/google-pay.png" alt="Google Pay">
+                        <span>Google Pay</span>
+                    </div>
+                    <div class="payment-option" data-method="paytm">
+                        <img src="Asserts/paytm.png" alt="Paytm">
+                        <span>Paytm</span>
+                    </div>
+
+                    <div class="payment-form-container">
+                        <div class="payment-form" id="creditCardForm">
+                            <div class="form-grid card-details">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expiry">Expiry</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1;">
+                                    <label for="cardHolder">Card Holder Name</label>
+                                    <input type="text" id="cardHolder" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitCard">Pay Now</button>
+                        </div>
+
+                        <div class="payment-form" id="netBankingForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="bankSelect">Select Bank</label>
+                                    <select id="bankSelect" required>
+                                        <option value="">Choose Bank</option>
+                                        <option value="sbi">State Bank of India</option>
+                                        <option value="hdfc">HDFC Bank</option>
+                                        <option value="icici">ICICI Bank</option>
+                                        <option value="axis">Axis Bank</option>
+                                        <option value="kotak">Kotak Mahindra Bank</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accountNumber">Account Number</label>
+                                    <input type="text" id="accountNumber" placeholder="Enter Account Number"
+                                        maxlength="20" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ifscCode">IFSC Code</label>
+                                    <input type="text" id="ifscCode" placeholder="e.g., SBIN0001234" maxlength="11"
+                                        required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitBank">Proceed to Pay</button>
+                        </div>
+
+                        <div class="payment-form" id="visaForm">
+                            <div class="form-grid card-details">
+                                <div class="form-group">
+                                    <label for="visaCardNumber">Visa Card Number</label>
+                                    <input type="text" id="visaCardNumber" placeholder="1234 5678 9012 3456"
+                                        maxlength="19" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="visaExpiry">Expiry</label>
+                                    <input type="text" id="visaExpiry" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="visaCvv">CVV</label>
+                                    <input type="text" id="visaCvv" placeholder="123" maxlength="3" required>
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1;">
+                                    <label for="visaCardHolder">Card Holder Name</label>
+                                    <input type="text" id="visaCardHolder" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitVisa">Pay Now</button>
+                        </div>
+
+                        <div class="payment-form" id="mastercardForm">
+                            <div class="form-grid card-details">
+                                <div class="form-group">
+                                    <label for="masterCardNumber">Mastercard Number</label>
+                                    <input type="text" id="masterCardNumber" placeholder="1234 5678 9012 3456"
+                                        maxlength="19" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="masterExpiry">Expiry</label>
+                                    <input type="text" id="masterExpiry" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="masterCvv">CVV</label>
+                                    <input type="text" id="masterCvv" placeholder="123" maxlength="3" required>
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1;">
+                                    <label for="masterCardHolder">Card Holder Name</label>
+                                    <input type="text" id="masterCardHolder" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitMastercard">Pay Now</button>
+                        </div>
+
+                        <div class="payment-form" id="rupayForm">
+                            <div class="form-grid card-details">
+                                <div class="form-group">
+                                    <label for="rupayCardNumber">RuPay Card Number</label>
+                                    <input type="text" id="rupayCardNumber" placeholder="1234 5678 9012 3456"
+                                        maxlength="19" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rupayExpiry">Expiry</label>
+                                    <input type="text" id="rupayExpiry" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rupayCvv">CVV</label>
+                                    <input type="text" id="rupayCvv" placeholder="123" maxlength="3" required>
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1;">
+                                    <label for="rupayCardHolder">Card Holder Name</label>
+                                    <input type="text" id="rupayCardHolder" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitRupay">Pay Now</button>
+                        </div>
+
+                        <div class="payment-form" id="googlePayForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="gpayUpi">UPI ID</label>
+                                    <input type="text" id="gpayUpi" placeholder="example@upi" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gpayPin">UPI PIN</label>
+                                    <input type="password" id="gpayPin" placeholder="Enter 4-6 digit PIN" maxlength="6"
+                                        required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitGooglePay">Pay Now</button>
+                        </div>
+
+                        <div class="payment-form" id="paytmForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="paytmMobile">Registered Mobile Number</label>
+                                    <input type="text" id="paytmMobile" placeholder="Enter 10-digit number"
+                                        maxlength="10" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paytmOtp">OTP</label>
+                                    <input type="text" id="paytmOtp" placeholder="Enter 6-digit OTP" maxlength="6"
+                                        required>
+                                </div>
+                            </div>
+                            <button class="submit-payment" id="submitPaytm">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h4>Payment Successful!</h4>
+        <p>Your recharge for <span id="successPlanName"></span> has been processed successfully.</p>
+        <button class="btn btn-primary mt-3" onclick="window.location.href='Recharge Plans.html'">Back to Plans</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = {
+            name: urlParams.get('name'),
+            price: parseInt(urlParams.get('price')),
+            data: urlParams.get('data'),
+            validity: urlParams.get('validity'),
+            calls: urlParams.get('calls'),
+            sms: urlParams.get('sms'),
+            features: urlParams.get('features') ? urlParams.get('features').split(',') : []
+        };
+        const userId = urlParams.get('userId');
+
+        // Display plan details
+        document.getElementById('planName').textContent = plan.name || 'N/A';
+        document.getElementById('planPrice').textContent = plan.price || '0';
+        document.getElementById('planData').textContent = plan.data || 'None';
+        document.getElementById('planValidity').textContent = plan.validity || 'N/A';
+        document.getElementById('planCalls').textContent = plan.calls || 'None';
+        document.getElementById('planSMS').textContent = plan.sms || 'None';
+        document.getElementById('planTotal').textContent = plan.price || '0';
+
+        const featuresElement = document.getElementById('planFeatures');
+        if (plan.features.length > 0) {
+            featuresElement.querySelector('span').textContent = plan.features.join(', ');
+        } else {
+            featuresElement.style.display = 'none';
+        }
+
+        // Payment handling
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const forms = {
+            'credit-card': document.getElementById('creditCardForm'),
+            'net-banking': document.getElementById('netBankingForm'),
+            'visa': document.getElementById('visaForm'),
+            'mastercard': document.getElementById('mastercardForm'),
+            'rupay': document.getElementById('rupayForm'),
+            'google-pay': document.getElementById('googlePayForm'),
+            'paytm': document.getElementById('paytmForm')
+        };
+        const overlay = document.getElementById('overlay');
+        const successMessage = document.getElementById('successMessage');
+        const successPlanName = document.getElementById('successPlanName');
+
+        function hideAllForms() {
+            Object.values(forms).forEach(form => form.classList.remove('active'));
+        }
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const method = option.dataset.method;
+                hideAllForms();
+                if (forms[method]) {
+                    forms[method].classList.add('active');
+                    forms[method].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function processPayment(method) {
+            fetch(`http://localhost:3000/users/${userId}`)
+                .then(response => response.json())
+                .then(user => {
+                    if (user.walletBalance >= plan.price) {
+                        const newRecharge = {
+                            amount: plan.price,
+                            plan: `${plan.data}, ${plan.validity}`,
+                            date: new Date().toISOString().split('T')[0],
+                            paymentMethod: method
+                        };
+                        user.rechargeHistory.push(newRecharge);
+                        user.walletBalance -= plan.price;
+
+                        return fetch(`http://localhost:3000/users/${userId}`, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                rechargeHistory: user.rechargeHistory,
+                                walletBalance: user.walletBalance
+                            })
+                        });
+                    } else {
+                        throw new Error('Insufficient wallet balance');
+                    }
+                })
+                .then(() => {
+                    overlay.style.display = 'block';
+                    successMessage.style.display = 'block';
+                    successPlanName.textContent = plan.name || 'N/A';
+                })
+                .catch(error => {
+                    console.error('Payment error:', error);
+                    alert(error.message || 'Payment failed. Please try again.');
+                });
+        }
+
+        // Credit Card
+        document.getElementById('submitCard').addEventListener('click', () => {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardHolder = document.getElementById('cardHolder').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            if (cardNumber && cardHolder && expiry && cvv) processPayment('credit-card');
+            else alert('Please fill all card details');
+        });
+
+        // Net Banking
+        document.getElementById('submitBank').addEventListener('click', () => {
+            const bank = document.getElementById('bankSelect').value;
+            const accountNumber = document.getElementById('accountNumber').value;
+            const ifscCode = document.getElementById('ifscCode').value;
+            if (bank && accountNumber && ifscCode) processPayment('net-banking');
+            else alert('Please fill all banking details');
+        });
+
+        // Visa
+        document.getElementById('submitVisa').addEventListener('click', () => {
+            const cardNumber = document.getElementById('visaCardNumber').value;
+            const cardHolder = document.getElementById('visaCardHolder').value;
+            const expiry = document.getElementById('visaExpiry').value;
+            const cvv = document.getElementById('visaCvv').value;
+            if (cardNumber && cardHolder && expiry && cvv) processPayment('visa');
+            else alert('Please fill all Visa card details');
+        });
+
+        // Mastercard
+        document.getElementById('submitMastercard').addEventListener('click', () => {
+            const cardNumber = document.getElementById('masterCardNumber').value;
+            const cardHolder = document.getElementById('masterCardHolder').value;
+            const expiry = document.getElementById('masterExpiry').value;
+            const cvv = document.getElementById('masterCvv').value;
+            if (cardNumber && cardHolder && expiry && cvv) processPayment('mastercard');
+            else alert('Please fill all Mastercard details');
+        });
+
+        // RuPay
+        document.getElementById('submitRupay').addEventListener('click', () => {
+            const cardNumber = document.getElementById('rupayCardNumber').value;
+            const cardHolder = document.getElementById('rupayCardHolder').value;
+            const expiry = document.getElementById('rupayExpiry').value;
+            const cvv = document.getElementById('rupayCvv').value;
+            if (cardNumber && cardHolder && expiry && cvv) processPayment('rupay');
+            else alert('Please fill all RuPay card details');
+        });
+
+        // Google Pay
+        document.getElementById('submitGooglePay').addEventListener('click', () => {
+            const upi = document.getElementById('gpayUpi').value;
+            const pin = document.getElementById('gpayPin').value;
+            if (upi && pin) processPayment('google-pay');
+            else alert('Please fill all Google Pay details');
+        });
+
+        // Paytm
+        document.getElementById('submitPaytm').addEventListener('click', () => {
+            const mobile = document.getElementById('paytmMobile').value;
+            const otp = document.getElementById('paytmOtp').value;
+            if (mobile && otp) processPayment('paytm');
+            else alert('Please fill all Paytm details');
+        });
+
+        // Input formatting
+        ['cardNumber', 'visaCardNumber', 'masterCardNumber', 'rupayCardNumber'].forEach(id => {
+            document.getElementById(id).addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '').match(/.{1,4}/g);
+                e.target.value = value ? value.join(' ') : '';
+            });
+        });
+
+        ['expiry', 'visaExpiry', 'masterExpiry', 'rupayExpiry'].forEach(id => {
+            document.getElementById(id).addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 2) e.target.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            });
+        });
+
+        document.getElementById('accountNumber').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('ifscCode').addEventListener('input', (e) => {
+            e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        });
+
+        document.getElementById('paytmMobile').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('paytmOtp').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('gpayPin').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    </script>
+</body>
+
+</html>

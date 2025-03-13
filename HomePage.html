@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .hero {
+            background: url('https://i.pinimg.com/736x/7a/06/71/7a0671b49823fa5ee3dcc7d8274433f3.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: backgroundZoom 6s ease-in-out infinite alternate;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(255, 79, 79, 0.4));
+            z-index: 1;
+        }
+
+        @keyframes backgroundZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideIn 2s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideIn 2.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+            border-radius: 50px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: slideIn 3s ease-out forwards;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(45deg, #f06595, #ff6b6b);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            color: white;
+        }
+
+        .plan-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .plan-card:hover .plan-img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .plan-card:hover .overlay {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .plan-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .millennial .overlay {
+            background: rgba(0, 114, 255, 0.6);
+        }
+
+        .genz .overlay {
+            background: rgba(255, 120, 140, 0.6);
+        }
+
+        .plan-icon {
+            font-size: 40px;
+            color: white;
+        }
+
+        .btn-animate {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-animate:hover {
+            transform: translateY(-3px);
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateY(-3px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-3px) rotate(2deg);
+            }
+
+            50% {
+                transform: translateY(-3px) rotate(-2deg);
+            }
+
+            75% {
+                transform: translateY(-3px) rotate(2deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .plan-card {
+                height: auto;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .carousel-item.active .fade-in {
+            opacity: 1;
+        }
+
+        .contact-btn,
+        .btn-animate {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover,
+        .btn-animate:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-animate {
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+        }
+
+        .input-animate:focus {
+            border: 2px solid #ff6f61;
+            box-shadow: 0px 0px 10px rgba(255, 111, 97, 0.5);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .commitment-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .features p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            animation: floatIcon 2s infinite ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatIcon {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .footer-links {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s ease-in-out;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            margin: 0 8px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        form input {
+            border-radius: 20px;
+            padding: 10px;
+            border: none;
+        }
+
+        form button {
+            border-radius: 20px;
+            padding: 10px 15px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #ffcc00;
+        }
+
+        .footer-links img {
+            margin-top: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 999;
+        }
+
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-primary">
+    <!-- Navbar -->
+    <nav class="navbar bg-info navbar-expand-lg navbar-dark " id="home">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 100px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="HomePage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="latestplans.html">Latest Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="popular plans.html">Popular Recharge Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Faq's.html">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Recharge Plans.html">Recharge</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="Asserts/prepaid(1).jpg" alt="Profile" width="35" height="35"
+                                class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="Profile.html">View Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="login.html" onclick="localStorage.clear()">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid bg-primary">
+        <div class="row">
+            <div class="col-12 hero">
+                <div class="hero-content">
+                    <h1>Welcome to Mobi-Comm</h1>
+                    <p class="tagline">Connecting the World, One Click at a Time</p>
+                    <p>Your ultimate destination for seamless mobile prepaid services. Stay connected, stay empowered.
+                    </p>
+                    <a href="#features" class="btn btn-custom btn-lg">Explore Our Features</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container my-5 py-5 px-4"
+        style="background-color: #f8f9fa; border-radius: 15px; padding-bottom: 0; margin-bottom: 0;">
+        <div id="features" class="features text-center py-4">
+            <h2 class="text-center mb-4 font-weight-bold">Why Choose Mobi-Comm?</h2>
+            <p class="text-muted mb-4">Enjoy seamless mobile recharges with exclusive benefits and top-notch support.
+            </p>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-0 shadow-lg feature-card">
+                        <img src="https://tse2.mm.bing.net/th?id=OIP.2I67FmLicXtX9bO485dKAQHaE8&pid=Api&P=0&h=220"
+                            class="card-img-top" alt="Easy Recharge">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-bolt text-primary"></i> Easy Recharge</h3>
+                            <p class="card-text">Recharge your mobile in just a few clicks. Enjoy instant top-ups with a
+                                smooth and intuitive experience.</p>
+                            <p class="text-muted">No waiting, no hassle—just recharge and go!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-0 shadow-lg feature-card">
+                        <img src="https://i.pinimg.com/736x/6d/80/2f/6d802fb654a20a692ac34a5d37dadf80.jpg"
+                            class="card-img-top" alt="Exclusive Offers">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-gift text-success"></i> Exclusive Offers</h3>
+                            <p class="card-text">Get access to special discounts, cashback, and exciting promotions.</p>
+                            <p class="text-muted">The best deals, just for you—every time you recharge.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-0 shadow-lg feature-card">
+                        <img src="https://i.pinimg.com/736x/65/57/eb/6557eb9fd590c0e9fe274d40998d4a51.jpg"
+                            class="card-img-top" alt="24/7 Support">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-headset text-danger"></i> 24/7 Support</h3>
+                            <p class="card-text">Our customer support team is available round the clock to assist you
+                                with any issues.</p>
+                            <p class="text-muted">Help is always just a message away.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entertainment and Network Section -->
+    <div class="container mt-5 p-5"
+        style="background: linear-gradient(135deg, #ff9a9e, #fad0c4); border-radius: 15px; box-shadow: 0px 5px 15px rgba(0,0,0,0.2);">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <h2 class="fw-bold text-white" data-aos="fade-right">Unlimited Fun and Entertainment</h2>
+                <p class="text-white" data-aos="fade-right" data-aos-delay="300">
+                    Enjoy access to <strong>900+ TV channels</strong>, stream your favorite content in over <strong>16
+                        languages</strong>, and much more with Mobi-Comm.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://i.pinimg.com/736x/82/60/0f/82600fff38a6eeb84060ad23fe36a0b0.jpg"
+                    class="img-fluid rounded shadow-lg" data-aos="zoom-in" alt="Entertainment" width="400" height="400">
+            </div>
+        </div>
+        <div class="row align-items-center flex-md-row-reverse">
+            <div class="col-md-6">
+                <h2 class="fw-bold text-white" data-aos="fade-left">Fast and Reliable Network</h2>
+                <p class="text-white" data-aos="fade-left" data-aos-delay="300">
+                    Get seamless <strong>mobile internet</strong> with <strong>5G speed</strong>, unlimited data, free
+                    calls, SMS, and more across India.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://i.pinimg.com/736x/fe/c2/71/fec271a7f3f5f5734b1f25b66017578d.jpg"
+                    class="img-fluid rounded shadow-lg" data-aos="zoom-in" alt="Connectivity" width="400" height="400">
+            </div>
+        </div>
+    </div>
+
+    <!-- Plans Section (Static) -->
+    <section class="container my-5">
+        <h2 class="text-center fw-bold mb-4" data-aos="fade-up">📱 Explore Our Exclusive Plans</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-5 mb-4" data-aos="fade-up">
+                <div class="card plan-card millennial text-center position-relative">
+                    <img src="https://i.pinimg.com/736x/07/30/99/0730993397a9da49dcdaa8110e2ffa69.jpg"
+                        alt="Millennial Plan" class="plan-img">
+                    <div class="overlay"></div>
+                    <div class="plan-content">
+                        <div class="plan-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3 class="fw-bold text-white">Millennial Plans 👨‍💼</h3>
+                        <p class="text-white">Designed for professionals & power users.</p>
+                        <ul class="list-unstyled text-white">
+                            <li>📶 High-speed 5G data</li>
+                            <li>🎬 Free Netflix & Amazon Prime</li>
+                            <li>📞 Unlimited Calls & SMS</li>
+                            <li>💼 Work-from-home benefits</li>
+                        </ul>
+                        <a href="millennialplans.html" class="btn btn-light btn-animate">View Plans</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card plan-card genz text-center position-relative">
+                    <img src="https://i.pinimg.com/736x/ba/11/80/ba1180eb3f602417714b2fc84c690883.jpg" alt="Gen Z Plan"
+                        class="plan-img">
+                    <div class="overlay"></div>
+                    <div class="plan-content">
+                        <div class="plan-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3 class="fw-bold text-white">Gen Z Plans 🎮</h3>
+                        <p class="text-white">Made for gamers, students & influencers.</p>
+                        <ul class="list-unstyled text-white">
+                            <li>📱 Extra social media data</li>
+                            <li>🎵 Free Spotify & YouTube Premium</li>
+                            <li>📞 Unlimited Calls & SMS</li>
+                            <li>💰 Budget-friendly plans</li>
+                        </ul>
+                        <a href="genzplans.html" class="btn btn-light btn-animate">View Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <div class="container mt-5 testimonials p-5"
+        style="background: linear-gradient(135deg, #D8BFD8, #C8C8D8); border-radius: 15px; box-shadow: 0px 5px 15px rgba(0,0,0,0.2);">
+        <h2 class="text-center mb-5 text-dark" data-aos="fade-up">What Our Customers Say</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner text-center">
+                <div class="carousel-item active">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="https://i.pinimg.com/474x/07/75/96/07759682b1aaf4c20c37fd580daa5c5d.jpg"
+                            class="rounded-circle shadow-lg mb-3" alt="John Doe" width="80" height="80">
+                        <blockquote class="blockquote fade-in">
+                            <p class="fst-italic">"Great service! Easy to use and very convenient. Highly recommended!"
+                            </p>
+                            <footer class="blockquote-footer">John Doe</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="https://i.pinimg.com/736x/02/8f/42/028f4292c39e4074b91a85596d82211f.jpg"
+                            class="rounded-circle shadow-lg mb-3" alt="Jane Smith" width="80" height="80">
+                        <blockquote class="blockquote fade-in">
+                            <p class="fst-italic">"I found the best plan for my needs! Appreciate the plan layouts.
+                                Thank you!"</p>
+                            <footer class="blockquote-footer">Jane Smith</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="https://i.pinimg.com/474x/fc/12/7a/fc127abf7c14839700688a74c6af2d64.jpg"
+                            class="rounded-circle shadow-lg mb-3" alt="Michael Brown" width="80" height="80">
+                        <blockquote class="blockquote fade-in">
+                            <p class="fst-italic">"Excellent customer support. They helped me choose the right plan."
+                            </p>
+                            <footer class="blockquote-footer">Michael Brown</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact and Commitment Section -->
+    <div class="container my-5 py-5 px-4 animated-section"
+        style="background-color: #FBE5E7; border-radius: 15px; box-shadow: 0px 5px 15px rgba(0,0,0,0.2);">
+        <div id="contact" class="row text-center" data-aos="fade-up">
+            <div class="col-12">
+                <h2 class="fw-bold">📩 Contact Us</h2>
+                <p class="text-muted">Get in touch with us for any queries or support.</p>
+                <button type="button" class="btn btn-secondary btn-lg mt-2 contact-btn" data-bs-toggle="modal"
+                    data-bs-target="#contactModal">Contact Form</button>
+            </div>
+        </div>
+
+        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content p-3">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="contactModalLabel">Get in Touch</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label">Name</label>
+                                <input type="text" class="form-control input-animate" id="contactName"
+                                    placeholder="Your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control input-animate" id="contactEmail"
+                                    placeholder="Your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactMessage" class="form-label">Message</label>
+                                <textarea class="form-control input-animate" id="contactMessage" rows="3"
+                                    placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-animate">Send Message</button>
+                        </form>
+                        <div id="contactSuccessMessage" class="alert alert-success mt-3 d-none">
+                            ✅ Message sent successfully!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="text-center my-3 py-3" data-aos="fade-up">
+            <h2 class="fw-bold">🤝 Our Commitment to You</h2>
+            <p class="text-muted">We prioritize reliability, affordability, and excellent service.</p>
+            <div class="row mt-3">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card commitment-card h-100 p-3 border-0 shadow-lg text-center">
+                        <i class="fas fa-lock text-primary fs-1 mb-2"></i>
+                        <h5 class="fw-bold">Secure Transactions</h5>
+                        <p class="text-muted">We ensure safe and encrypted payments for all recharges.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card commitment-card h-100 p-3 border-0 shadow-lg text-center">
+                        <i class="fas fa-thumbs-up text-success fs-1 mb-2"></i>
+                        <h5 class="fw-bold">100% Satisfaction</h5>
+                        <p class="text-muted">Your happiness is our priority. We ensure seamless transactions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card commitment-card h-100 p-3 border-0 shadow-lg text-center">
+                        <i class="fas fa-globe text-warning fs-1 mb-2"></i>
+                        <h5 class="fw-bold">Nationwide Coverage</h5>
+                        <p class="text-muted">Recharge any number, anytime, across India.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card commitment-card h-100 p-3 border-0 shadow-lg text-center">
+                        <i class="fas fa-gift text-danger fs-1 mb-2"></i>
+                        <h5 class="fw-bold">Exclusive Rewards</h5>
+                        <p class="text-muted">Earn rewards and enjoy special perks on every recharge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-info text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="fw-bold">MobiComm</h5>
+                    <p>Your trusted online mobile recharge service, providing fast and secure transactions.</p>
+                    <img src="Asserts/LogoPic.png" alt="Company Logo" style="max-width: 120px;">
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="HomePage.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="latestplans.html" class="text-white text-decoration-none">Latest Plans</a></li>
+                        <li><a href="popular plans.html" class="text-white text-decoration-none">Popular Plans</a></li>
+                        <li><a href="Faq's.html" class="text-white text-decoration-none">FAQ's</a></li>
+                        <li><a href="Recharge Plans.html" class="text-white text-decoration-none">Recharge</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Customer Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Track My Recharge</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Report an Issue</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Stay Updated</h5>
+                    <p>Subscribe for exclusive offers & new recharge plans.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-warning">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <h5 class="fw-bold mt-3">We Accept</h5>
+                    <div class="d-flex">
+                        <img src="Asserts/visa.png" alt="Visa" width="30" height="30">
+                        <img src="Asserts/mastercard.png" alt="Mastercard" width="30" height="30">
+                        <img src="Asserts/Rupay.png" alt="RuPay" width="30" height="30">
+                        <img src="Asserts/google-pay.png" alt="Google Pay" width="30" height="30">
+                        <img src="Asserts/paytm.png" alt="Paytm" width="30" height="30">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light">
+            <div class="row text-center">
+                <div class="col">
+                    <p class="mb-0">© 2025 MobiComm. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="btn btn-secondary back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function () {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("contactForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var name = document.getElementById("contactName").value.trim();
+                var email = document.getElementById("contactEmail").value.trim();
+                var message = document.getElementById("contactMessage").value.trim();
+
+                if (name === "" || email === "" || message === "") {
+                    alert("⚠ Please fill out all fields.");
+                } else {
+                    var successMsg = document.getElementById("contactSuccessMessage");
+                    successMsg.classList.remove("d-none");
+                    successMsg.classList.add("fade-in");
+
+                    setTimeout(function () {
+                        successMsg.classList.add("d-none");
+                        successMsg.classList.remove("fade-in");
+                        var myModal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
+                        if (myModal) myModal.hide();
+                        document.getElementById("contactForm").reset();
+                    }, 2000);
+                }
+            });
+
+            // Check user role and add Admin Panel link if admin
+            const userRole = localStorage.getItem('userRole');
+            if (userRole === 'admin') {
+                const adminLink = document.createElement('li');
+                adminLink.className = 'nav-item';
+                adminLink.innerHTML = '<a class="nav-link" href="admin.html">Admin Panel</a>';
+                document.querySelector('.navbar-nav').insertBefore(adminLink, document.querySelector('.navbar-nav .nav-item.dropdown'));
+            }
+        });
+    </script>
+</body>
+
+</html>

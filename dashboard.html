@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        .navbar-brand img {
+            border-radius: 90%;
+            max-height: 90px;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            transition: width 0.5s;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #343a40;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            transition: margin-left 0.5s;
+        }
+
+        .navbar-brand {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            border-radius: 50%;
+        }
+
+        .navbar {
+            height: 90px;
+
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .btn-block {
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .btn-block:hover {
+            transform: scale(1.05);
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-inline .form-control {
+            border-radius: 20px;
+        }
+
+        .form-inline .btn {
+            border-radius: 20px;
+        }
+
+        .table {
+            background: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar bg-primary">
+        <div class="profile text-center">
+            <img src="Asserts/prepaid(1).jpg" alt="Profile Picture" class="img-fluid rounded-circle mb-2" width="100">
+            <h5 id="adminName">Hari Priya</h5>
+            <p id="totalEarnings">Total Earnings: $0.00</p>
+        </div>
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="users.html"><i class="fas fa-users"></i> User Management</a>
+        <a href="recharge_management.html"><i class="fas fa-mobile-alt"></i> Recharge Management</a>
+        <a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="admin_settings.html"><i class="fas fa-cogs"></i> Settings</a>
+    </div>
+
+    <div class="content">
+        <nav class="navbar navbar-expand-lg bg-info">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"
+                    style="max-width: 150px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Buttons and Tables -->
+        <div class="container-fluid mt-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-block" onclick="window.location.href='recharge_management.html'">
+                        <i class="fas fa-mobile-alt"></i> Recharge Management
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success btn-block" onclick="window.location.href='transactions.html'">
+                        <i class="fas fa-exchange-alt"></i> Transactions
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-block" onclick="window.location.href='users.html'">
+                        <i class="fas fa-users"></i> User Management
+                    </button>
+                </div>
+
+                <!-- Top Recharge Plans Table -->
+                <div class="col-md-6">
+                    <h4>Top Recharge Plans</h4>
+                    <table class="table table-bordered" id="topPlansTable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Plan</th>
+                                <th>Recharges</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Top Customers Table -->
+                <div class="col-md-6">
+                    <h4>Top Customers</h4>
+                    <table class="table table-bordered" id="topCustomersTable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Summary Statistics -->
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Users</h5>
+                            <p class="card-text" id="totalUsers">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Recharges</h5>
+                            <p class="card-text" id="totalRecharges">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Transactions</h5>
+                            <p class="card-text" id="totalTransactions">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Plans</h5>
+                            <p class="card-text" id="totalPlans">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts with Search Button -->
+            <div class="row my-4">
+                <div class="col-md-12">
+                    <form class="form-inline mb-4" id="searchForm">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                            id="searchInput">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Recharges by Users</h4>
+                    <canvas id="rechargesByUsersChart"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <h4>Recharges by Plans</h4>
+                    <canvas id="rechargesByPlansChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Check if user is admin (placeholder; implement real auth in production)
+        if (!localStorage.getItem('userRole') || localStorage.getItem('userRole') !== 'admin') {
+            window.location.href = 'login.html';
+        }
+
+        let allUsers = [];
+        let allPlans = [];
+        let allRecharges = [];
+
+        // Fetch Data from db.json
+        async function fetchData() {
+            try {
+                const usersResponse = await fetch('http://localhost:3000/users');
+                allUsers = await usersResponse.json();
+
+                const plansResponse = await fetch('http://localhost:3000/plans');
+                allPlans = await plansResponse.json();
+
+                // Aggregate recharge data from users
+                allRecharges = [];
+                allUsers.forEach(user => {
+                    user.rechargeHistory.forEach(recharge => {
+                        allRecharges.push({
+                            userId: user.id,
+                            userName: user.name,
+                            amount: recharge.amount,
+                            plan: recharge.plan,
+                            date: recharge.date
+                        });
+                    });
+                });
+
+                updateDashboard();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('Failed to load dashboard data.');
+            }
+        }
+
+        // Update Dashboard
+        function updateDashboard() {
+            // Summary Statistics
+            document.getElementById('totalUsers').textContent = allUsers.length;
+            document.getElementById('totalRecharges').textContent = allRecharges.length;
+            document.getElementById('totalTransactions').textContent = allRecharges.length; // Assuming transactions = recharges for demo
+            document.getElementById('totalPlans').textContent = allPlans.length;
+
+            // Admin Profile (assuming user ID 1 is Hari Priya)
+            const admin = allUsers.find(user => user.id === 1) || { name: 'Hari Priya', rechargeHistory: [] };
+            document.getElementById('adminName').textContent = admin.name;
+            const totalEarnings = admin.rechargeHistory.reduce((sum, recharge) => sum + recharge.amount, 0);
+            document.getElementById('totalEarnings').textContent = `Total Earnings: $${totalEarnings.toFixed(2)}`;
+
+            // Top Recharge Plans
+            const planCounts = {};
+            allRecharges.forEach(recharge => {
+                planCounts[recharge.plan] = (planCounts[recharge.plan] || 0) + 1;
+            });
+            const topPlans = Object.entries(planCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+            const topPlansTable = document.getElementById('topPlansTable').getElementsByTagName('tbody')[0];
+            topPlansTable.innerHTML = '';
+            topPlans.forEach(([plan, count]) => {
+                topPlansTable.innerHTML += `<tr><td>${plan}</td><td>${count}</td></tr>`;
+            });
+
+            // Top Customers
+            const customerTotals = {};
+            allRecharges.forEach(recharge => {
+                customerTotals[recharge.userName] = (customerTotals[recharge.userName] || 0) + recharge.amount;
+            });
+            const topCustomers = Object.entries(customerTotals)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+            const topCustomersTable = document.getElementById('topCustomersTable').getElementsByTagName('tbody')[0];
+            topCustomersTable.innerHTML = '';
+            topCustomers.forEach(([customer, amount]) => {
+                topCustomersTable.innerHTML += `<tr><td>${customer}</td><td>$${amount.toFixed(2)}</td></tr>`;
+            });
+
+            // Charts
+            updateCharts();
+        }
+
+        // Update Charts
+        function updateCharts() {
+            // Recharges by Users (Doughnut Chart)
+            const userRechargeCounts = {};
+            allRecharges.forEach(recharge => {
+                userRechargeCounts[recharge.userName] = (userRechargeCounts[recharge.userName] || 0) + 1;
+            });
+            const userLabels = Object.keys(userRechargeCounts).slice(0, 6);
+            const userData = userLabels.map(label => userRechargeCounts[label]);
+
+            const ctx1 = document.getElementById('rechargesByUsersChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: userLabels,
+                    datasets: [{
+                        data: userData,
+                        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#4bc0c0', '#9966ff']
+                    }]
+                },
+                options: { responsive: true }
+            });
+
+            // Recharges by Plans (Bar Chart)
+            const planCounts = {};
+            allRecharges.forEach(recharge => {
+                planCounts[recharge.plan] = (planCounts[recharge.plan] || 0) + 1;
+            });
+            const planLabels = Object.keys(planCounts).slice(0, 5);
+            const planData = planLabels.map(label => planCounts[label]);
+
+            const ctx2 = document.getElementById('rechargesByPlansChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: planLabels,
+                    datasets: [{
+                        label: 'Recharges',
+                        data: planData,
+                        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#4bc0c0']
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', fetchData);
+    </script>
+</body>
+
+</html>

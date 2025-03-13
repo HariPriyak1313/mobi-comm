@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            transition: width 0.5s;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .profile img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar a {
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #343a40;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 30px;
+            transition: margin-left 0.5s;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .transactions-table,
+        .top-types-table {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .transactions-table thead {
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            color: white;
+        }
+
+        .top-types-table thead {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            color: white;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff, #f9f9fb);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-card i {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .stats-card h5 {
+            color: #343a40;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .stats-card p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 0;
+        }
+
+        .filter-bar {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+            border: 2px solid #17a2b8;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #138496;
+            box-shadow: 0 0 10px rgba(23, 162, 184, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar bg-primary">
+        <div class="profile text-center">
+            <img src="Asserts/prepaid(1).jpg" alt="Profile Picture" class="img-fluid mb-2" id="sidebarImage">
+            <h5 id="adminName">Loading...</h5>
+            <p id="totalEarnings">Total Earnings: ₹0.00</p>
+        </div>
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="users.html"><i class="fas fa-users"></i> User Management</a>
+        <a href="recharge_management.html"><i class="fas fa-mobile-alt"></i> Recharge Management</a>
+        <a href="transactions.html" class="active"><i class="fas fa-exchange-alt"></i> Transactions</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="admin_settings.html"><i class="fas fa-cogs"></i> Settings</a>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <h2>Transaction History</h2>
+
+            <div class="filter-bar">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="searchFilter" placeholder="Search by User or Plan">
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="paymentFilter">
+                            <option value="all">All Payment Modes</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Online">Online</option>
+                            <option value="UPI">UPI</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" id="dateFilter" placeholder="Filter by Date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card mb-4">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered transactions-table mb-0" id="transactionsTable">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Plan</th>
+                                        <th>Amount (₹)</th>
+                                        <th>Date</th>
+                                        <th>Mode of Payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h2>Transaction Stats</h2>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h5>Total Transactions</h5>
+                        <p id="totalTransactions">0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h5>Total Amount</h5>
+                        <p id="totalAmount">₹0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-calendar-day"></i>
+                        <h5>Today’s Transactions</h5>
+                        <p id="todayTransactions">0</p>
+                    </div>
+
+                    <h2>Top Payment Types</h2>
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered top-types-table mb-0" id="topTypesTable">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <p id="errorMessage" class="text-danger text-center mt-3" style="display: none;"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Check admin authentication
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('userRole') || localStorage.getItem('userRole') !== 'admin') {
+                window.location.href = 'login.html';
+            } else {
+                fetchTransactions();
+                updateAdminProfile();
+            }
+        });
+
+        let allUsers = [];
+        let allTransactions = [];
+        let adminId = localStorage.getItem('userId') || 1; // Assuming admin is user ID 1
+
+        // Fetch transactions and admin data from db.json
+        async function fetchTransactions() {
+            try {
+                const usersResponse = await fetch('http://localhost:3000/users');
+                allUsers = await usersResponse.json();
+
+                // Aggregate transactions from users' rechargeHistory
+                allTransactions = [];
+                allUsers.forEach(user => {
+                    user.rechargeHistory.forEach(recharge => {
+                        allTransactions.push({
+                            userName: user.name,
+                            plan: recharge.plan,
+                            amount: recharge.amount,
+                            date: recharge.date,
+                            modeOfPayment: recharge.modeOfPayment || 'Online'
+                        });
+                    });
+                });
+
+                displayTransactions(allTransactions);
+                updateStats();
+                updateTopTypes();
+            } catch (error) {
+                console.error('Error fetching transactions:', error);
+                document.getElementById('errorMessage').textContent = "Failed to load transactions. Please try again later.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        // Update admin profile in sidebar from db.json
+        async function updateAdminProfile() {
+            try {
+                const admin = allUsers.find(user => user.id == adminId && user.role === 'admin') || { name: 'Hari Priya', profileImage: 'Asserts/prepaid(1).jpg', earnings: 0 };
+                document.getElementById('adminName').textContent = admin.name;
+                document.getElementById('sidebarImage').src = admin.profileImage || 'Asserts/prepaid(1).jpg';
+
+                // Use admin's earnings field if available, otherwise calculate from rechargeHistory
+                const totalEarnings = admin.earnings || admin.rechargeHistory.reduce((sum, recharge) => sum + recharge.amount, 0);
+                document.getElementById('totalEarnings').textContent = `Total Earnings: ₹${totalEarnings.toFixed(2)}`;
+            } catch (error) {
+                console.error('Error updating admin profile:', error);
+                document.getElementById('errorMessage').textContent = "Failed to load admin profile.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        // Display transactions in table
+        function displayTransactions(transactions) {
+            const tbody = document.getElementById('transactionsTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            transactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${transaction.userName}</td>
+                    <td>${transaction.plan}</td>
+                    <td>₹${transaction.amount}</td>
+                    <td>${transaction.date}</td>
+                    <td>${transaction.modeOfPayment}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Filter transactions
+        function filterTransactions() {
+            const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+            const paymentFilter = document.getElementById('paymentFilter').value;
+            const dateFilter = document.getElementById('dateFilter').value;
+
+            const filteredTransactions = allTransactions.filter(transaction => {
+                const matchesSearch = transaction.userName.toLowerCase().includes(searchFilter) ||
+                    transaction.plan.toLowerCase().includes(searchFilter);
+                const matchesPayment = paymentFilter === 'all' || transaction.modeOfPayment === paymentFilter;
+                const matchesDate = !dateFilter || transaction.date === dateFilter;
+                return matchesSearch && matchesPayment && matchesDate;
+            });
+
+            displayTransactions(filteredTransactions);
+        }
+
+        // Update transaction statistics
+        function updateStats() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('totalTransactions').textContent = allTransactions.length;
+            document.getElementById('totalAmount').textContent = `₹${allTransactions.reduce((sum, t) => sum + t.amount, 0).toFixed(2)}`;
+            document.getElementById('todayTransactions').textContent = allTransactions.filter(t => t.date === today).length;
+        }
+
+        // Update top payment types table
+        function updateTopTypes() {
+            const tbody = document.getElementById('topTypesTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            const paymentCounts = {};
+            allTransactions.forEach(transaction => {
+                paymentCounts[transaction.modeOfPayment] = (paymentCounts[transaction.modeOfPayment] || 0) + 1;
+            });
+
+            const topTypes = Object.entries(paymentCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            topTypes.forEach(([type, count]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${type}</td>
+                    <td>${count}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Event listeners for filters
+        document.getElementById('searchFilter').addEventListener('input', filterTransactions);
+        document.getElementById('paymentFilter').addEventListener('change', filterTransactions);
+        document.getElementById('dateFilter').addEventListener('change', filterTransactions);
+    </script>
+</body>
+
+</html>

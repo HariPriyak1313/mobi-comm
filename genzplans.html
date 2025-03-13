@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen Z Plans - Mobi-Comm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .navbar-brand img {
+            max-width: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease-out forwards;
+            animation-delay: calc(0.1s * var(--card-order));
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .btn-info {
+            background: linear-gradient(45deg, #17a2b8, #00d4ff);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-info:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #138496, #00b7ff);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #00d4ff);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #218838, #00b7ff);
+        }
+
+        .btn-danger {
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Horizontal card layout */
+        .plans-row {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .plan-card-col {
+            flex: 1 0 30%;
+            max-width: 33.33%;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .plans-row {
+                flex-wrap: wrap;
+            }
+
+            .plan-card-col {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-info">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Asserts/LogoPic.png" alt="Logo" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="HomePage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="latestplans.html">Latest Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="popular plans.html">Popular Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Faq's.html">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Recharge Plans.html">Recharge</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <h2 class="text-center mb-4">🔥 Gen Z Exclusive Plans 🔥</h2>
+        <div id="plans-loading" class="text-center mb-4">
+            <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="text-center mb-4" id="adminControls" style="display: none;">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPlanModal">Add New Plan</button>
+        </div>
+        <div class="plans-row" id="genzPlansContainer"></div>
+        <div id="plans-error" class="text-center text-danger mt-4" style="display: none;"></div>
+    </div>
+
+    <!-- View Plan Modal -->
+    <div class="modal fade" id="planModal" tabindex="-1" aria-labelledby="planModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-success" id="buyPlanBtn">Buy Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Plan Modal -->
+    <div class="modal fade" id="addPlanModal" tabindex="-1" aria-labelledby="addPlanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPlanModalLabel">Add New Plan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="planForm">
+                        <input type="hidden" id="planId">
+                        <div class="mb-3">
+                            <label for="planName" class="form-label">Plan Name</label>
+                            <input type="text" class="form-control" id="planName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="planDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="planDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="planPrice" class="form-label">Price (₹)</label>
+                            <input type="number" class="form-control" id="planPrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="planData" class="form-label">Data</label>
+                            <input type="text" class="form-control" id="planData" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="planValidity" class="form-label">Validity</label>
+                            <input type="text" class="form-control" id="planValidity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="planImage" class="form-label">Image URL</label>
+                            <input type="text" class="form-control" id="planImage">
+                        </div>
+                        <div class="mb-3">
+                            <label for="planFeatures" class="form-label">Features (comma-separated)</label>
+                            <input type="text" class="form-control" id="planFeatures">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="savePlan()">Save Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let isAdmin = false;
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            const container = document.getElementById("genzPlansContainer");
+            const loading = document.getElementById("plans-loading");
+            const errorDiv = document.getElementById("plans-error");
+            const adminControls = document.getElementById("adminControls");
+
+            // Load user profile and check admin status
+            const userId = localStorage.getItem('userId') || 1;
+            try {
+                const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+                if (!userResponse.ok) throw new Error("Failed to fetch user");
+                const user = await userResponse.json();
+                isAdmin = user.role === "admin";
+                if (isAdmin) adminControls.style.display = "block";
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+
+            // Load plans
+            try {
+                loading.style.display = "block";
+                container.style.display = "none";
+                errorDiv.style.display = "none";
+
+                const response = await fetch("http://localhost:3000/plans");
+                if (!response.ok) throw new Error("Failed to fetch plans");
+                const data = await response.json();
+
+                const genzPlans = data.filter(plan => plan.category === "genz");
+                displayPlans(genzPlans, "genzPlansContainer");
+
+                loading.style.display = "none";
+                container.style.display = "flex";
+            } catch (error) {
+                loading.style.display = "none";
+                container.style.display = "flex";
+                errorDiv.style.display = "block";
+                errorDiv.textContent = "Error loading plans. Please try again later.";
+                console.error("Error loading plans:", error);
+            }
+        });
+
+        function displayPlans(plans, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            if (plans.length === 0) {
+                container.innerHTML = '<p class="text-center">No Gen Z plans available.</p>';
+                return;
+            }
+            plans.forEach((plan, index) => {
+                const adminButtons = isAdmin ? `
+                    <button class="btn btn-warning mt-2" onclick="editPlan('${plan.id}')">Edit</button>
+                    <button class="btn btn-danger mt-2" onclick="deletePlan('${plan.id}')">Delete</button>
+                ` : '';
+                const card = `
+                    <div class="plan-card-col" style="--card-order: ${index};">
+                        <div class="card text-center shadow-lg h-100">
+                            <img src="${plan.image || 'https://via.placeholder.com/200'}" class="card-img-top" alt="${plan.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${plan.name}</h5>
+                                <p class="card-text">${plan.description || 'No description available'}</p>
+                                <p class="fw-bold">₹${plan.price}</p>
+                                <button class="btn btn-info" onclick="viewPlan('${plan.id}')">View Plan</button>
+                                <button class="btn btn-success" onclick="buyPlan('${plan.id}')">Buy Plan</button>
+                                ${adminButtons}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        async function viewPlan(planId) {
+            try {
+                const response = await fetch(`http://localhost:3000/plans/${planId}`);
+                if (!response.ok) throw new Error("Failed to fetch plan details");
+                const plan = await response.json();
+                document.getElementById("modalTitle").textContent = plan.name;
+                document.getElementById("modalBody").innerHTML = `
+                    <p>${plan.description || 'No description'}</p>
+                    <p><strong>Price:</strong> ₹${plan.price}</p>
+                    <p><strong>Data:</strong> ${plan.data}</p>
+                    <p><strong>Validity:</strong> ${plan.validity}</p>
+                    <p><strong>Calls:</strong> ${plan.calls || 'Unlimited'}</p>
+                    <p><strong>SMS:</strong> ${plan.sms || '100/day'}</p>
+                    <p><strong>Features:</strong> ${plan.features ? plan.features.join(', ') : 'None'}</p>
+                `;
+                const buyBtn = document.getElementById("buyPlanBtn");
+                buyBtn.onclick = () => buyPlan(planId);
+                const modal = new bootstrap.Modal(document.getElementById("planModal"));
+                modal.show();
+            } catch (error) {
+                console.error("Error fetching plan details:", error);
+                alert("Unable to load plan details. Please try again.");
+            }
+        }
+
+        async function buyPlan(planId) {
+            const userId = localStorage.getItem('userId') || 1;
+            try {
+                const planResponse = await fetch(`http://localhost:3000/plans/${planId}`);
+                if (!planResponse.ok) throw new Error("Failed to fetch plan");
+                const plan = await planResponse.json();
+
+                const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+                if (!userResponse.ok) throw new Error("Failed to fetch user");
+                const user = await userResponse.json();
+
+                const newRecharge = {
+                    amount: plan.price,
+                    plan: `${plan.data}, ${plan.validity}`,
+                    date: new Date().toISOString().split('T')[0]
+                };
+                user.rechargeHistory.push(newRecharge);
+
+                const updateResponse = await fetch(`http://localhost:3000/users/${userId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                });
+
+                if (updateResponse.ok) {
+                    const features = plan.features ? plan.features.join(',') : '';
+                    const url = `payment.html?name=${encodeURIComponent(plan.name)}&price=${plan.price}&data=${encodeURIComponent(plan.data)}&validity=${encodeURIComponent(plan.validity)}&calls=${encodeURIComponent(plan.calls || 'Unlimited')}&sms=${encodeURIComponent(plan.sms || '100/day')}&features=${encodeURIComponent(features)}&userId=${userId}`;
+                    window.location.href = url;
+                } else {
+                    throw new Error('Failed to update recharge history');
+                }
+            } catch (error) {
+                console.error("Error processing recharge:", error);
+                alert("Error processing recharge. Please try again.");
+            }
+        }
+
+        function editPlan(planId) {
+            fetch(`http://localhost:3000/plans/${planId}`)
+                .then(response => response.json())
+                .then(plan => {
+                    document.getElementById("planId").value = plan.id;
+                    document.getElementById("planName").value = plan.name;
+                    document.getElementById("planDescription").value = plan.description || '';
+                    document.getElementById("planPrice").value = plan.price;
+                    document.getElementById("planData").value = plan.data;
+                    document.getElementById("planValidity").value = plan.validity;
+                    document.getElementById("planImage").value = plan.image || '';
+                    document.getElementById("planFeatures").value = plan.features ? plan.features.join(', ') : '';
+                    document.getElementById("addPlanModalLabel").textContent = "Edit Plan";
+                    new bootstrap.Modal(document.getElementById("addPlanModal")).show();
+                })
+                .catch(error => {
+                    console.error("Error fetching plan for edit:", error);
+                    alert("Unable to load plan for editing.");
+                });
+        }
+
+        async function deletePlan(planId) {
+            if (confirm("Are you sure you want to delete this plan?")) {
+                try {
+                    const response = await fetch(`http://localhost:3000/plans/${planId}`, {
+                        method: 'DELETE'
+                    });
+                    if (!response.ok) throw new Error("Failed to delete plan");
+                    loadPlans(); // Refresh plans
+                    alert("Plan deleted successfully!");
+                } catch (error) {
+                    console.error("Error deleting plan:", error);
+                    alert("Error deleting plan. Please try again.");
+                }
+            }
+        }
+
+        async function savePlan() {
+            const planId = document.getElementById("planId").value;
+            const plan = {
+                id: planId || `GENZ-${Date.now()}`,
+                name: document.getElementById("planName").value,
+                description: document.getElementById("planDescription").value,
+                price: parseInt(document.getElementById("planPrice").value),
+                data: document.getElementById("planData").value,
+                validity: document.getElementById("planValidity").value,
+                image: document.getElementById("planImage").value || '',
+                features: document.getElementById("planFeatures").value.split(',').map(f => f.trim()).filter(f => f),
+                category: "genz",
+                calls: "Unlimited",
+                sms: "100/day"
+            };
+
+            try {
+                const method = planId ? 'PUT' : 'POST';
+                const url = planId ? `http://localhost:3000/plans/${planId}` : 'http://localhost:3000/plans';
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(plan)
+                });
+                if (!response.ok) throw new Error(`Failed to ${planId ? 'update' : 'add'} plan`);
+                loadPlans();
+                alert(`Plan ${planId ? 'updated' : 'added'} successfully!`);
+                bootstrap.Modal.getInstance(document.getElementById("addPlanModal")).hide();
+                document.getElementById("planForm").reset();
+                document.getElementById("addPlanModalLabel").textContent = "Add New Plan";
+            } catch (error) {
+                console.error(`Error ${planId ? 'updating' : 'adding'} plan:`, error);
+                alert(`Error ${planId ? 'updating' : 'adding'} plan. Please try again.`);
+            }
+        }
+
+        async function loadPlans() {
+            const container = document.getElementById("genzPlansContainer");
+            const loading = document.getElementById("plans-loading");
+            const errorDiv = document.getElementById("plans-error");
+
+            try {
+                loading.style.display = "block";
+                container.style.display = "none";
+                errorDiv.style.display = "none";
+
+                const response = await fetch("http://localhost:3000/plans");
+                if (!response.ok) throw new Error("Failed to fetch plans");
+                const data = await response.json();
+
+                const genzPlans = data.filter(plan => plan.category === "genz");
+                displayPlans(genzPlans, "genzPlansContainer");
+
+                loading.style.display = "none";
+                container.style.display = "flex";
+            } catch (error) {
+                loading.style.display = "none";
+                container.style.display = "flex";
+                errorDiv.style.display = "block";
+                errorDiv.textContent = "Error loading plans. Please try again later.";
+                console.error("Error loading plans:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>

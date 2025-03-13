@@ -1,0 +1,1531 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "mobileNumber": "1234567890",
+      "email": "user1@example.com",
+      "name": "Hari Priya",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "2GB/day, 84 days",
+          "date": "2025-02-27"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-27"
+        },
+        {
+          "amount": 699,
+          "plan": "2GB/day, 84 days",
+          "date": "2025-02-27"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-27"
+        },
+        {
+          "amount": 499,
+          "plan": "10GB, 30 days",
+          "date": "2025-02-27"
+        },
+        {
+          "amount": 161,
+          "plan": "12GB, 30 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 149,
+          "plan": "1GB/day, 14 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 599,
+          "plan": "3GB/day, 56 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 599,
+          "plan": "3GB/day, 56 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 699,
+          "plan": "2GB/day, 84 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 599,
+          "plan": "3GB/day, 56 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 999,
+          "plan": "5GB/day, 90 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 499,
+          "plan": "1.5GB/day, 56 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 161,
+          "plan": "12GB, 30 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 699,
+          "plan": "2GB/day, 84 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 161,
+          "plan": "12GB, 30 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 499,
+          "plan": "10GB, 30 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 849,
+          "plan": "3GB/day, 56 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/day, 28 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 361,
+          "plan": "50GB, 30 days",
+          "date": "2025-03-01"
+        }
+      ],
+      "walletBalance": 307,
+      "lastLogin": "2025-02-27T10:30:00",
+      "verified": true,
+      "language": "en",
+      "notifications": "all",
+      "securityQuestion": "q1",
+      "securityAnswer": ""
+    },
+    {
+      "id": "2",
+      "mobileNumber": "0987654321",
+      "email": "user2@example.com",
+      "name": "Varshini",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 399,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 149,
+          "plan": "1GB/Day, 14 Days",
+          "date": "2025-01-05"
+        }
+      ],
+      "walletBalance": 75,
+      "lastLogin": "2025-02-26T14:45:00",
+      "verified": false
+    },
+    {
+      "id": "3",
+      "mobileNumber": "1112223333",
+      "email": "admin@example.com",
+      "name": "Hari Priya",
+      "role": "admin",
+      "rechargeHistory": [
+        {
+          "amount": 999,
+          "plan": "5GB/day, 90 days",
+          "date": "2025-02-28"
+        }
+      ],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T09:15:00",
+      "verified": true,
+      "profileImage": "Asserts/prepaid(1).jpg"
+    },
+    {
+      "id": "4",
+      "mobileNumber": "4445556666",
+      "email": "user4@example.com",
+      "name": "Rohan Gupta",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 349,
+          "plan": "3GB/Day, 28 Days",
+          "date": "2025-02-10"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2025-01-01"
+        }
+      ],
+      "walletBalance": 50,
+      "lastLogin": "2025-02-27T08:00:00",
+      "verified": true
+    },
+    {
+      "id": "5",
+      "mobileNumber": "7778889999",
+      "email": "user5@example.com",
+      "name": "Sneha Reddy",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "2GB/Day, 84 Days",
+          "date": "2025-02-01"
+        }
+      ],
+      "walletBalance": 100,
+      "lastLogin": "2025-02-27T08:15:00",
+      "verified": false
+    },
+    {
+      "id": "6",
+      "mobileNumber": "2223334444",
+      "email": "user6@example.com",
+      "name": "Vikram Singh",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T08:30:00",
+      "verified": false
+    },
+    {
+      "id": "7",
+      "mobileNumber": "5556667777",
+      "email": "user7@example.com",
+      "name": "Anjali Nair",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 499,
+          "plan": "1.5GB/Day, 56 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2024-12-20"
+        }
+      ],
+      "walletBalance": 25,
+      "lastLogin": "2025-02-27T08:45:00",
+      "verified": true
+    },
+    {
+      "id": "8",
+      "mobileNumber": "8889990000",
+      "email": "user8@example.com",
+      "name": "Kunal Desai",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 599,
+          "plan": "3GB/Day, 30 Days",
+          "date": "2025-02-05"
+        }
+      ],
+      "walletBalance": 80,
+      "lastLogin": "2025-02-27T09:00:00",
+      "verified": false
+    },
+    {
+      "id": "9",
+      "mobileNumber": "3334445555",
+      "email": "user9@example.com",
+      "name": "Meera Joshi",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 399,
+          "plan": "5GB/Day, 15 Days",
+          "date": "2025-02-20"
+        },
+        {
+          "amount": 149,
+          "plan": "1GB/Day, 14 Days",
+          "date": "2025-01-25"
+        }
+      ],
+      "walletBalance": 30,
+      "lastLogin": "2025-02-27T09:15:00",
+      "verified": true
+    },
+    {
+      "id": "10",
+      "mobileNumber": "6667778888",
+      "email": "user10@example.com",
+      "name": "Arjun Rao",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "2GB/day, 84 days",
+          "date": "2025-02-28"
+        },
+        {
+          "amount": 599,
+          "plan": "3GB/day, 30 days",
+          "date": "2025-02-28"
+        }
+      ],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T09:30:00",
+      "verified": false
+    },
+    {
+      "id": "11",
+      "mobileNumber": "9990001111",
+      "email": "user11@example.com",
+      "name": "Pooja Verma",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2025-02-10"
+        }
+      ],
+      "walletBalance": 60,
+      "lastLogin": "2025-02-27T09:45:00",
+      "verified": false
+    },
+    {
+      "id": "12",
+      "mobileNumber": "1212121212",
+      "email": "user12@example.com",
+      "name": "Nikhil Kumar",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 719,
+          "plan": "1.5GB/Day, 84 Days",
+          "date": "2025-01-20"
+        },
+        {
+          "amount": 399,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2024-12-15"
+        }
+      ],
+      "walletBalance": 120,
+      "lastLogin": "2025-02-27T10:00:00",
+      "verified": true
+    },
+    {
+      "id": "13",
+      "mobileNumber": "3434343434",
+      "email": "user13@example.com",
+      "name": "Riya Malhotra",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 849,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-02-01"
+        }
+      ],
+      "walletBalance": 90,
+      "lastLogin": "2025-02-27T10:15:00",
+      "verified": false
+    },
+    {
+      "id": "14",
+      "mobileNumber": "5656565656",
+      "email": "user14@example.com",
+      "name": "Siddharth Jain",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 999,
+          "plan": "5GB/Day, 90 Days",
+          "date": "2025-01-10"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2024-11-30"
+        }
+      ],
+      "walletBalance": 200,
+      "lastLogin": "2025-02-27T10:30:00",
+      "verified": true
+    },
+    {
+      "id": "15",
+      "mobileNumber": "7878787878",
+      "email": "user15@example.com",
+      "name": "Tanya Kapoor",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T10:45:00",
+      "verified": false
+    },
+    {
+      "id": "16",
+      "mobileNumber": "9090909090",
+      "email": "user16@example.com",
+      "name": "Aditya Chopra",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 649,
+          "plan": "4GB/Day, 60 Days",
+          "date": "2025-02-15"
+        }
+      ],
+      "walletBalance": 70,
+      "lastLogin": "2025-02-27T11:00:00",
+      "verified": true
+    },
+    {
+      "id": "17",
+      "mobileNumber": "2323232323",
+      "email": "user17@example.com",
+      "name": "Shalini Iyer",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 499,
+          "plan": "10GB, 30 Days",
+          "date": "2025-02-20"
+        },
+        {
+          "amount": 149,
+          "plan": "1GB/Day, 14 Days",
+          "date": "2025-01-15"
+        }
+      ],
+      "walletBalance": 40,
+      "lastLogin": "2025-02-27T11:15:00",
+      "verified": false
+    },
+    {
+      "id": "18",
+      "mobileNumber": "4545454545",
+      "email": "user18@example.com",
+      "name": "Rahul Menon",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 799,
+          "plan": "6GB/Day, 45 Days",
+          "date": "2025-02-05"
+        }
+      ],
+      "walletBalance": 110,
+      "lastLogin": "2025-02-27T11:30:00",
+      "verified": true
+    },
+    {
+      "id": "19",
+      "mobileNumber": "6767676767",
+      "email": "user19@example.com",
+      "name": "Divya Suresh",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 599,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-01-25"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2024-12-20"
+        }
+      ],
+      "walletBalance": 85,
+      "lastLogin": "2025-02-27T11:45:00",
+      "verified": false
+    },
+    {
+      "id": "20",
+      "mobileNumber": "8989898989",
+      "email": "user20@example.com",
+      "name": "Amitabh Roy",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T12:00:00",
+      "verified": false
+    },
+    {
+      "id": "21",
+      "mobileNumber": "1010101010",
+      "email": "user21@example.com",
+      "name": "Neha Bhatt",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "4GB/Day, 60 Days",
+          "date": "2025-02-10"
+        }
+      ],
+      "walletBalance": 95,
+      "lastLogin": "2025-02-27T12:15:00",
+      "verified": true
+    },
+    {
+      "id": "22",
+      "mobileNumber": "1213141516",
+      "email": "user22@example.com",
+      "name": "Karan Mehra",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 1499,
+          "plan": "10GB, 30 Days",
+          "date": "2025-02-01"
+        },
+        {
+          "amount": 361,
+          "plan": "50GB, 30 Days",
+          "date": "2025-01-01"
+        }
+      ],
+      "walletBalance": 150,
+      "lastLogin": "2025-02-27T12:30:00",
+      "verified": false
+    },
+    {
+      "id": "23",
+      "mobileNumber": "1617181920",
+      "email": "user23@example.com",
+      "name": "Swati Das",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 211,
+          "plan": "1GB/Day, 30 Days",
+          "date": "2025-02-15"
+        }
+      ],
+      "walletBalance": 20,
+      "lastLogin": "2025-02-27T12:45:00",
+      "verified": true
+    },
+    {
+      "id": "24",
+      "mobileNumber": "2021222324",
+      "email": "user24@example.com",
+      "name": "Vishal Pillai",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 181,
+          "plan": "15GB, 30 Days",
+          "date": "2025-02-20"
+        },
+        {
+          "amount": 161,
+          "plan": "12GB, 30 Days",
+          "date": "2025-01-20"
+        }
+      ],
+      "walletBalance": 45,
+      "lastLogin": "2025-02-27T13:00:00",
+      "verified": false
+    },
+    {
+      "id": "25",
+      "mobileNumber": "2425262728",
+      "email": "user25@example.com",
+      "name": "Lakshmi Nair",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T13:15:00",
+      "verified": false
+    },
+    {
+      "id": "26",
+      "mobileNumber": "2829303132",
+      "email": "user26@example.com",
+      "name": "Rakesh Yadav",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 659,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-02-10"
+        }
+      ],
+      "walletBalance": 130,
+      "lastLogin": "2025-02-27T13:30:00",
+      "verified": true
+    },
+    {
+      "id": "27",
+      "mobileNumber": "3233343536",
+      "email": "user27@example.com",
+      "name": "Suman Ghosh",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 3499,
+          "plan": "5GB, 10 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 999,
+          "plan": "4GB/Day, 84 Days",
+          "date": "2025-01-05"
+        }
+      ],
+      "walletBalance": 250,
+      "lastLogin": "2025-02-27T13:45:00",
+      "verified": false
+    },
+    {
+      "id": "28",
+      "mobileNumber": "3637383940",
+      "email": "user28@example.com",
+      "name": "Tarun Sethi",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2025-02-20"
+        }
+      ],
+      "walletBalance": 15,
+      "lastLogin": "2025-02-27T14:00:00",
+      "verified": true
+    },
+    {
+      "id": "29",
+      "mobileNumber": "4041424344",
+      "email": "user29@example.com",
+      "name": "Jyoti Rana",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 599,
+          "plan": "3GB/Day, 30 Days",
+          "date": "2025-02-10"
+        },
+        {
+          "amount": 399,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2025-01-01"
+        }
+      ],
+      "walletBalance": 65,
+      "lastLogin": "2025-02-27T14:15:00",
+      "verified": false
+    },
+    {
+      "id": "30",
+      "mobileNumber": "4445464748",
+      "email": "user30@example.com",
+      "name": "Manish Thakur",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T14:30:00",
+      "verified": false
+    },
+    {
+      "id": "31",
+      "mobileNumber": "4849505152",
+      "email": "user31@example.com",
+      "name": "Preeti Saxena",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "2GB/Day, 84 Days",
+          "date": "2025-02-05"
+        }
+      ],
+      "walletBalance": 110,
+      "lastLogin": "2025-02-27T14:45:00",
+      "verified": true
+    },
+    {
+      "id": "32",
+      "mobileNumber": "5253545556",
+      "email": "user32@example.com",
+      "name": "Gaurav Arora",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 499,
+          "plan": "1.5GB/Day, 56 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2024-12-25"
+        }
+      ],
+      "walletBalance": 35,
+      "lastLogin": "2025-02-27T15:00:00",
+      "verified": false
+    },
+    {
+      "id": "33",
+      "mobileNumber": "5657585960",
+      "email": "user33@example.com",
+      "name": "Shruti Kulkarni",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 849,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-02-01"
+        }
+      ],
+      "walletBalance": 95,
+      "lastLogin": "2025-02-27T15:15:00",
+      "verified": true
+    },
+    {
+      "id": "34",
+      "mobileNumber": "6061626364",
+      "email": "user34@example.com",
+      "name": "Akash Tiwari",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 999,
+          "plan": "5GB/Day, 90 Days",
+          "date": "2025-01-15"
+        }
+      ],
+      "walletBalance": 180,
+      "lastLogin": "2025-02-27T15:30:00",
+      "verified": false
+    },
+    {
+      "id": "35",
+      "mobileNumber": "6465666768",
+      "email": "user35@example.com",
+      "name": "Deepika Sen",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T15:45:00",
+      "verified": false
+    },
+    {
+      "id": "36",
+      "mobileNumber": "6869707172",
+      "email": "user36@example.com",
+      "name": "Ravi Mishra",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 649,
+          "plan": "4GB/Day, 60 Days",
+          "date": "2025-02-10"
+        },
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2025-01-01"
+        }
+      ],
+      "walletBalance": 75,
+      "lastLogin": "2025-02-27T16:00:00",
+      "verified": true
+    },
+    {
+      "id": "37",
+      "mobileNumber": "7273747576",
+      "email": "user37@example.com",
+      "name": "Anita Bose",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 799,
+          "plan": "6GB/Day, 45 Days",
+          "date": "2025-02-05"
+        }
+      ],
+      "walletBalance": 120,
+      "lastLogin": "2025-02-27T16:15:00",
+      "verified": false
+    },
+    {
+      "id": "38",
+      "mobileNumber": "7677787980",
+      "email": "user38@example.com",
+      "name": "Suresh Patil",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 599,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 399,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2025-01-10"
+        }
+      ],
+      "walletBalance": 90,
+      "lastLogin": "2025-02-27T16:30:00",
+      "verified": true
+    },
+    {
+      "id": "39",
+      "mobileNumber": "8081828384",
+      "email": "user39@example.com",
+      "name": "Kavita Sharma",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T16:45:00",
+      "verified": false
+    },
+    {
+      "id": "40",
+      "mobileNumber": "8485868788",
+      "email": "user40@example.com",
+      "name": "Yash Rajput",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 699,
+          "plan": "2GB/Day, 84 Days",
+          "date": "2025-02-01"
+        }
+      ],
+      "walletBalance": 105,
+      "lastLogin": "2025-02-27T17:00:00",
+      "verified": true
+    },
+    {
+      "id": "41",
+      "mobileNumber": "8889909192",
+      "email": "user41@example.com",
+      "name": "Nisha Aggarwal",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 1499,
+          "plan": "10GB, 30 Days",
+          "date": "2025-02-20"
+        },
+        {
+          "amount": 361,
+          "plan": "50GB, 30 Days",
+          "date": "2025-01-15"
+        }
+      ],
+      "walletBalance": 160,
+      "lastLogin": "2025-02-27T17:15:00",
+      "verified": false
+    },
+    {
+      "id": "42",
+      "mobileNumber": "9293949596",
+      "email": "user42@example.com",
+      "name": "Harish Vyas",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 211,
+          "plan": "1GB/Day, 30 Days",
+          "date": "2025-02-10"
+        }
+      ],
+      "walletBalance": 25,
+      "lastLogin": "2025-02-27T17:30:00",
+      "verified": true
+    },
+    {
+      "id": "43",
+      "mobileNumber": "9697989900",
+      "email": "user43@example.com",
+      "name": "Geeta Dubey",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 181,
+          "plan": "15GB, 30 Days",
+          "date": "2025-02-15"
+        },
+        {
+          "amount": 161,
+          "plan": "12GB, 30 Days",
+          "date": "2025-01-20"
+        }
+      ],
+      "walletBalance": 50,
+      "lastLogin": "2025-02-27T17:45:00",
+      "verified": false
+    },
+    {
+      "id": "44",
+      "mobileNumber": "9900010203",
+      "email": "user44@example.com",
+      "name": "Sameer Khan",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T18:00:00",
+      "verified": false
+    },
+    {
+      "id": "45",
+      "mobileNumber": "0304050607",
+      "email": "user45@example.com",
+      "name": "Rekha Pandey",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 659,
+          "plan": "3GB/Day, 56 Days",
+          "date": "2025-02-05"
+        }
+      ],
+      "walletBalance": 140,
+      "lastLogin": "2025-02-27T18:15:00",
+      "verified": true
+    },
+    {
+      "id": "46",
+      "mobileNumber": "0708091011",
+      "email": "user46@example.com",
+      "name": "Vivek Chawla",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 3499,
+          "plan": "5GB, 10 Days",
+          "date": "2025-02-20"
+        },
+        {
+          "amount": 999,
+          "plan": "5GB/Day, 90 Days",
+          "date": "2025-01-01"
+        }
+      ],
+      "walletBalance": 270,
+      "lastLogin": "2025-02-27T18:30:00",
+      "verified": false
+    },
+    {
+      "id": "47",
+      "mobileNumber": "1112131415",
+      "email": "user47@example.com",
+      "name": "Sonali Dutta",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 299,
+          "plan": "2GB/Day, 28 Days",
+          "date": "2025-02-15"
+        }
+      ],
+      "walletBalance": 20,
+      "lastLogin": "2025-02-27T18:45:00",
+      "verified": true
+    },
+    {
+      "id": "48",
+      "mobileNumber": "1516171819",
+      "email": "user48@example.com",
+      "name": "Pradeep Saini",
+      "role": "user",
+      "rechargeHistory": [
+        {
+          "amount": 599,
+          "plan": "3GB/Day, 30 Days",
+          "date": "2025-02-10"
+        },
+        {
+          "amount": 399,
+          "plan": "2GB/Day, 30 Days",
+          "date": "2025-01-05"
+        }
+      ],
+      "walletBalance": 70,
+      "lastLogin": "2025-02-27T19:00:00",
+      "verified": false
+    },
+    {
+      "id": "49",
+      "mobileNumber": "1920212223",
+      "email": "user49@example.com",
+      "name": "Monika Rani",
+      "role": "user",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T19:15:00",
+      "verified": false
+    },
+    {
+      "id": "50",
+      "mobileNumber": "2324252627",
+      "email": "admin2@example.com",
+      "name": "Admin Two",
+      "role": "admin",
+      "rechargeHistory": [],
+      "walletBalance": 0,
+      "lastLogin": "2025-02-27T19:30:00",
+      "verified": true
+    }
+  ],
+  "plans": [
+    {
+      "id": "POP-A1B2",
+      "name": "Unlimited Calls + 2GB/day",
+      "data": "2GB/day",
+      "validity": "28 days",
+      "price": 299,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Popular",
+      "features": [
+        "Unlimited Calls",
+        "2GB Daily Data"
+      ],
+      "active": false
+    },
+    {
+      "id": "POP-X9K4",
+      "name": "1.5GB/day + Disney+ Hotstar",
+      "data": "1.5GB/day",
+      "validity": "84 days",
+      "price": 719,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Premium",
+      "features": [
+        "Disney+ Hotstar",
+        "Long Validity"
+      ]
+    },
+    {
+      "id": "POP-M3P7",
+      "name": "3GB/day + Netflix",
+      "data": "3GB/day",
+      "validity": "56 days",
+      "price": 849,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Premium",
+      "features": [
+        "Netflix Subscription",
+        "High Data"
+      ],
+      "active": false
+    },
+    {
+      "id": "POP-Q5T9",
+      "name": "5GB/day + Amazon Prime",
+      "data": "5GB/day",
+      "validity": "90 days",
+      "price": 999,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Premium",
+      "features": [
+        "Amazon Prime",
+        "Max Data"
+      ],
+      "active": true
+    },
+    {
+      "id": "POP-J8R2",
+      "name": "2GB/day + Free SMS",
+      "data": "2GB/day",
+      "validity": "30 days",
+      "price": 399,
+      "calls": "Unlimited",
+      "sms": "Unlimited",
+      "category": "popular",
+      "badge": "Value",
+      "features": [
+        "Free SMS",
+        "Daily Data"
+      ]
+    },
+    {
+      "id": "POP-K6N4",
+      "name": "4GB/day + Spotify",
+      "data": "4GB/day",
+      "validity": "60 days",
+      "price": 649,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Premium",
+      "features": [
+        "Spotify Access",
+        "High Data"
+      ]
+    },
+    {
+      "id": "POP-P2V7",
+      "name": "Unlimited Calls + 10GB",
+      "data": "10GB",
+      "validity": "30 days",
+      "price": 499,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Value",
+      "features": [
+        "Flat 10GB",
+        "Unlimited Calls"
+      ]
+    },
+    {
+      "id": "POP-W4Y9",
+      "name": "1GB/day + 100 SMS",
+      "data": "1GB/day",
+      "validity": "14 days",
+      "price": 149,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Budget",
+      "features": [
+        "Short Validity",
+        "Daily Data"
+      ]
+    },
+    {
+      "id": "POP-Z7H3",
+      "name": "6GB/day + Free YouTube",
+      "data": "6GB/day",
+      "validity": "45 days",
+      "price": 799,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "popular",
+      "badge": "Premium",
+      "features": [
+        "Free YouTube",
+        "Ultra Data"
+      ]
+    },
+    {
+      "id": "LAT-B9M2",
+      "name": "Basic Pack",
+      "data": "2GB/day",
+      "validity": "28 days",
+      "price": 299,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 2.jpg",
+      "description": "Enjoy unlimited calls and 2GB data per day for 28 days. Perfect for light users!",
+      "features": [
+        "Unlimited Calls",
+        "2GB Daily Data"
+      ]
+    },
+    {
+      "id": "LAT-D3F5",
+      "name": "Super Value Plan",
+      "data": "3GB/day",
+      "validity": "56 days",
+      "price": 599,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 3.jpg",
+      "description": "Get 3GB data per day, 100 SMS/day, and unlimited calls for 56 days. Ideal for heavy users!",
+      "features": [
+        "High Data",
+        "Long Validity"
+      ]
+    },
+    {
+      "id": "LAT-G6J8",
+      "name": "Premium Pack",
+      "data": "4GB/day",
+      "validity": "84 days",
+      "price": 999,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 4.jpg",
+      "description": "Unlimited data, free OTT subscription, and international calling benefits for 90 days.",
+      "features": [
+        "OTT Subscription",
+        "International Calls"
+      ]
+    },
+    {
+      "id": "LAT-H2L4",
+      "name": "Family Plan",
+      "data": "2GB/day per member",
+      "validity": "30 days",
+      "price": 799,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 5.jpg",
+      "description": "Share 200GB of data among 4 family members with unlimited calling for 30 days.",
+      "features": [
+        "Family Sharing",
+        "Unlimited Calls"
+      ]
+    },
+    {
+      "id": "LAT-N5P7",
+      "name": "Work from Home Pack",
+      "data": "4GB/day",
+      "validity": "60 days",
+      "price": 699,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 6.jpg",
+      "description": "Get 4GB of high-speed data daily with unlimited calling, valid for 60 days.",
+      "features": [
+        "WFH Optimized",
+        "High Speed"
+      ]
+    },
+    {
+      "id": "LAT-R8T2",
+      "name": "International Travel Pack",
+      "data": "10GB",
+      "validity": "30 days",
+      "price": 1499,
+      "calls": "100 international minutes",
+      "sms": "50/day",
+      "category": "latest",
+      "image": "Asserts/prepaid 7.jpg",
+      "description": "Get global roaming, 10GB international data, and 100 free international minutes.",
+      "features": [
+        "Global Roaming",
+        "International Data"
+      ]
+    },
+    {
+      "id": "DAT-C4K6",
+      "name": "50GB Data Pack",
+      "data": "50GB",
+      "validity": "30 days",
+      "price": 361,
+      "calls": "None",
+      "sms": "None",
+      "category": "data",
+      "features": [
+        "High Data",
+        "No Calls"
+      ]
+    },
+    {
+      "id": "DAT-E7N9",
+      "name": "1GB/day Data",
+      "data": "1GB/day",
+      "validity": "30 days",
+      "price": 211,
+      "calls": "None",
+      "sms": "None",
+      "category": "data",
+      "features": [
+        "Daily Data",
+        "Budget Friendly"
+      ]
+    },
+    {
+      "id": "DAT-F2Q5",
+      "name": "15GB + OTT",
+      "data": "15GB",
+      "validity": "30 days",
+      "price": 181,
+      "calls": "None",
+      "sms": "None",
+      "category": "data",
+      "features": [
+        "Airtel Xstream Play",
+        "15GB Data"
+      ]
+    },
+    {
+      "id": "DAT-J9V3",
+      "name": "12GB Data",
+      "data": "12GB",
+      "validity": "30 days",
+      "price": 161,
+      "calls": "None",
+      "sms": "None",
+      "category": "data",
+      "features": [
+        "Flat Data",
+        "Affordable"
+      ]
+    },
+    {
+      "id": "UNL-L5X8",
+      "name": "Unlimited 2GB/day",
+      "data": "2GB/day",
+      "validity": "28 days",
+      "price": 299,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "unlimited",
+      "features": [
+        "Unlimited Calls",
+        "Daily Data"
+      ]
+    },
+    {
+      "id": "TKT-M3Z6",
+      "name": "₹5000 Talktime",
+      "data": "None",
+      "validity": "NA",
+      "price": 5000,
+      "calls": "₹4237.29 talktime",
+      "sms": "None",
+      "category": "talktime",
+      "features": [
+        "High Talktime",
+        "Top-up"
+      ]
+    },
+    {
+      "id": "TKT-P7B4",
+      "name": "₹1000 Talktime",
+      "data": "None",
+      "validity": "NA",
+      "price": 1000,
+      "calls": "₹847.46 talktime",
+      "sms": "None",
+      "category": "talktime",
+      "features": [
+        "Talktime",
+        "Top-up"
+      ],
+      "active": false
+    },
+    {
+      "id": "TKT-T2D9",
+      "name": "₹500 Talktime",
+      "data": "None",
+      "validity": "NA",
+      "price": 500,
+      "calls": "₹423.73 talktime",
+      "sms": "None",
+      "category": "talktime",
+      "features": [
+        "Talktime",
+        "Top-up"
+      ],
+      "active": true
+    },
+    {
+      "id": "TKT-V6G3",
+      "name": "₹100 Talktime",
+      "data": "None",
+      "validity": "NA",
+      "price": 100,
+      "calls": "₹81.75 talktime",
+      "sms": "None",
+      "category": "talktime",
+      "features": [
+        "Talktime",
+        "Top-up"
+      ]
+    },
+    {
+      "id": "CRK-Y9H5",
+      "name": "Cricket 3GB/day",
+      "data": "3GB/day",
+      "validity": "56 days",
+      "price": 659,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "cricket",
+      "features": [
+        "Cricket Live Streaming",
+        "High Data"
+      ]
+    },
+    {
+      "id": "ROM-Z4K7",
+      "name": "Roaming USA & UK",
+      "data": "5GB",
+      "validity": "10 days",
+      "price": 3499,
+      "calls": "Unlimited",
+      "sms": "50/day",
+      "category": "roaming",
+      "features": [
+        "International Roaming",
+        "Unlimited Calls"
+      ]
+    },
+    {
+      "id": "GENZ-GZ1",
+      "name": "Gen Z TikTok Blast",
+      "data": "3GB/day",
+      "validity": "28 days",
+      "price": 349,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "genz",
+      "image": "https://i.pinimg.com/736x/44/a8/56/44a856cba39665a92c38cf18e8fc9ba2.jpg",
+      "description": "Unlimited calls, 3GB/day, and free TikTok access for the ultimate Gen Z vibe!",
+      "features": [
+        "TikTok Access",
+        "High Data"
+      ]
+    },
+    {
+      "id": "GENZ-GZ2",
+      "name": "Insta Snap Pack",
+      "data": "2GB/day",
+      "validity": "30 days",
+      "price": 299,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "genz",
+      "image": "https://i.pinimg.com/736x/b3/f4/64/b3f46448d795e219d394c565063b73bd.jpg",
+      "description": "Stay connected with 2GB/day and free Instagram for all your snaps and stories!",
+      "features": [
+        "Instagram Free",
+        "Daily Data"
+      ]
+    },
+    {
+      "id": "GENZ-GZ3",
+      "name": "Gaming Lite",
+      "data": "5GB/day",
+      "validity": "15 days",
+      "price": 399,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "genz",
+      "image": "https://i.pinimg.com/736x/c1/93/d6/c193d663d65189d721dfe730fd9e4b62.jpg",
+      "description": "5GB/day for gaming, streaming, and chilling—perfect for short-term fun!",
+      "features": [
+        "Gaming Optimized",
+        "High Speed"
+      ]
+    },
+    {
+      "id": "MILL-MN1",
+      "name": "Millennial Work & Chill",
+      "data": "2GB/day",
+      "validity": "84 days",
+      "price": 699,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "millennial",
+      "image": "https://i.pinimg.com/736x/ac/9f/b6/ac9fb6b63bbfc633b9c5c52b94dc8803.jpg",
+      "description": "Long-term 2GB/day with Netflix for work-from-home and chill nights!",
+      "features": [
+        "Netflix Included",
+        "Long Validity"
+      ]
+    },
+    {
+      "id": "MILL-MN2",
+      "name": "Social Pro",
+      "data": "1.5GB/day",
+      "validity": "56 days",
+      "price": 499,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "millennial",
+      "image": "https://i.pinimg.com/736x/d3/83/89/d3838960b3fa8e4b9587b60102577806.jpg",
+      "description": "Stay social with 1.5GB/day and free LinkedIn access for networking!",
+      "features": [
+        "LinkedIn Free",
+        "Balanced Data"
+      ]
+    },
+    {
+      "id": "MILL-MN3",
+      "name": "Travel Vibe",
+      "data": "3GB/day",
+      "validity": "30 days",
+      "price": 599,
+      "calls": "Unlimited",
+      "sms": "100/day",
+      "category": "millennial",
+      "image": "https://i.pinimg.com/736x/13/ef/f3/13eff3469447bdd9e03a71bc665d114c.jpg",
+      "description": "3GB/day with free Google Maps for your next travel adventure!",
+      "features": [
+        "Google Maps Free",
+        "Travel Ready"
+      ]
+    },
+    {
+      "id": "PLAN-1740697111910",
+      "name": "",
+      "image": "",
+      "data": "",
+      "validity": "",
+      "price": null,
+      "category": "data",
+      "features": [],
+      "active": false
+    },
+    {
+      "id": "PLAN-1740732991840",
+      "name": "data",
+      "image": "",
+      "data": "3gb",
+      "validity": "56",
+      "price": 133,
+      "category": "data",
+      "features": [
+        "unlimited calls"
+      ],
+      "active": true
+    }
+  ]
+}

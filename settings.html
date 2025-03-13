@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <style>
+        /* Settings Card Styling */
+        .settings-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .settings-header {
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-text {
+            margin: 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .header-text:hover {
+            transform: scale(1.1) rotate(2deg);
+            color: #ffcc00;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .settings-form {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        .form-control[readonly] {
+            background-color: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            min-width: 150px;
+        }
+
+        .form-group:hover .form-label {
+            color: #007bff;
+        }
+
+        .form-group i {
+            margin-right: 10px;
+            color: #007bff;
+            font-size: 20px;
+        }
+
+        .btn-save {
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-save:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #0056b3, #00b7ff);
+        }
+
+        .btn-back {
+            background: linear-gradient(45deg, #6c757d, #adb5bd);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-back:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #5a6268, #8f969c);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-brand img {
+            max-width: 80px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-link {
+            color: white !important;
+            font-size: 14px;
+            padding: 0.5rem 0.75rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        /* Footer Styling */
+        .footer-links {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+            padding: 40px 0;
+            font-size: 14px;
+            position: relative;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group {
+            animation: slideIn 0.5s ease-out forwards;
+            animation-delay: calc(0.1s * var(--order));
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#"><img src="Asserts/Logo(1).png" alt="Logo" class="img-fluid"></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="HomePage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="latestplans.html">Latest Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="popular plans.html">Popular Recharge Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Faq's.html">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Recharge Plans.html">Recharge</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Section -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Account Settings</h2>
+        <div class="card settings-card">
+            <div class="settings-header">
+                <h3 class="header-text">Update Your Profile</h3>
+            </div>
+            <div class="settings-form">
+                <form id="settingsForm">
+                    <div class="form-group" style="--order: 1;">
+                        <i class="fas fa-user"></i>
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" readonly>
+                    </div>
+                    <div class="form-group" style="--order: 2;">
+                        <i class="fas fa-envelope"></i>
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group" style="--order: 3;">
+                        <i class="fas fa-phone"></i>
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" readonly>
+                    </div>
+                    <div class="form-group" style="--order: 4;">
+                        <i class="fas fa-lock"></i>
+                        <label for="password" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group" style="--order: 5;">
+                        <i class="fas fa-lock"></i>
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm-password"
+                            placeholder="Confirm new password">
+                    </div>
+                    <div class="form-group" style="--order: 6;">
+                        <i class="fas fa-globe"></i>
+                        <label for="language" class="form-label">Preferred Language</label>
+                        <select class="form-control" id="language">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="hi">Hindi</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="--order: 7;">
+                        <i class="fas fa-bell"></i>
+                        <label for="notifications" class="form-label">Notification Preferences</label>
+                        <select class="form-control" id="notifications">
+                            <option value="all">All Notifications</option>
+                            <option value="important">Important Only</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="--order: 8;">
+                        <i class="fas fa-question-circle"></i>
+                        <label for="security-question" class="form-label">Security Question</label>
+                        <select class="form-control" id="security-question">
+                            <option value="q1">What is your mother's maiden name?</option>
+                            <option value="q2">What was your first pet's name?</option>
+                            <option value="q3">What is your favorite book?</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="--order: 9;">
+                        <i class="fas fa-key"></i>
+                        <label for="security-answer" class="form-label">Security Answer</label>
+                        <input type="text" class="form-control" id="security-answer" placeholder="Enter your answer">
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-save">Save Changes</button>
+                        <a href="profile.html" class="btn btn-back ms-3">Back to Profile</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-links mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="fw-bold">MobiComm</h5>
+                    <p>Your trusted online mobile recharge service, providing fast and secure transactions.</p>
+                    <img src="Asserts/Logo(1).png" alt="Company Logo" style="max-width: 100px;">
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="HomePage.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="latestplans.html" class="text-white text-decoration-none">Latest Plans</a></li>
+                        <li><a href="popular plans.html" class="text-white text-decoration-none">Popular Plans</a></li>
+                        <li><a href="Faq's.html" class="text-white text-decoration-none">FAQ's</a></li>
+                        <li><a href="Recharge Plans.html" class="text-white text-decoration-none">Recharge</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Customer Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Track My Recharge</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Report an Issue</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Stay Updated</h5>
+                    <p>Subscribe for exclusive offers & new recharge plans.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-warning">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="fw-bold">Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <h5 class="fw-bold mt-3">We Accept</h5>
+                    <div class="d-flex">
+                        <img src="Asserts/visa.png" alt="Visa" width="30" height="30">
+                        <img src="Asserts/mastercard.png" alt="Mastercard" width="30" height="30">
+                        <img src="Asserts/Rupay.png" alt="RuPay" width="30" height="30">
+                        <img src="Asserts/google-pay.png" alt="Google Pay" width="30" height="30">
+                        <img src="Asserts/paytm.png" alt="Paytm" width="30" height="30">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light">
+            <div class="row text-center">
+                <div class="col">
+                    <p class="mb-0">© 2025 MobiComm. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load user data from db.json
+        function loadUserSettings() {
+            const userId = 1; // Hardcoded for demo (Hari Priya); replace with dynamic ID in production
+
+            fetch(`http://localhost:3000/users/${userId}`)
+                .then(response => response.json())
+                .then(user => {
+                    // Populate form fields with current data
+                    document.getElementById('name').value = user.name || '';
+                    document.getElementById('email').value = user.email || '';
+                    document.getElementById('phone').value = user.mobileNumber || '';
+
+                    // Optional: Pre-fill additional fields if added to db.json
+                    // For now, these are not in db.json, so they remain empty unless you extend the schema
+                    document.getElementById('language').value = user.language || 'en';
+                    document.getElementById('notifications').value = user.notifications || 'all';
+                    document.getElementById('security-question').value = user.securityQuestion || 'q1';
+                    document.getElementById('security-answer').value = user.securityAnswer || '';
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                    alert('Failed to load settings. Please try again later.');
+                });
+        }
+
+        // Handle form submission to update user data
+        document.getElementById('settingsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const userId = 1; // Hardcoded for demo
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const language = document.getElementById('language').value;
+            const notifications = document.getElementById('notifications').value;
+            const securityQuestion = document.getElementById('security-question').value;
+            const securityAnswer = document.getElementById('security-answer').value;
+
+            // Basic validation
+            if (password && password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Prepare updated user data
+            const updatedData = {
+                email: email,
+                language: language,
+                notifications: notifications,
+                securityQuestion: securityQuestion,
+                securityAnswer: securityAnswer
+            };
+
+            // Only include password if it’s provided
+            if (password) {
+                updatedData.password = password; // In production, hash this before saving
+            }
+
+            // Send PATCH request to update user data
+            fetch(`http://localhost:3000/users/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Settings updated successfully!');
+                        window.location.href = 'profile.html'; // Redirect back to profile
+                    } else {
+                        throw new Error('Failed to update settings');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating settings:', error);
+                    alert('Failed to save changes. Please try again.');
+                });
+        });
+
+        // Load settings when the page loads
+        document.addEventListener('DOMContentLoaded', loadUserSettings);
+    </script>
+</body>
+
+</html>

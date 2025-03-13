@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings - Mobi-Comm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            transition: width 0.5s;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .profile img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar a {
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #343a40;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 30px;
+            transition: margin-left 0.5s;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-log-table {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .activity-log-table thead {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            color: white;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff, #f9f9fb);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-card i {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .stats-card h5 {
+            color: #343a40;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .stats-card p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 0;
+        }
+
+        .form-control {
+            border-radius: 20px;
+            border: 2px solid #17a2b8;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #138496;
+            box-shadow: 0 0 10px rgba(23, 162, 184, 0.5);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            border: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+            background: linear-gradient(45deg, #218838, #28a745);
+        }
+
+        .profile-image-preview {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar bg-primary">
+        <div class="profile text-center">
+            <img src="Asserts/prepaid(1).jpg" alt="Profile Picture" class="img-fluid mb-2" id="sidebarImage">
+            <h5 id="adminName">Loading...</h5>
+            <p id="totalEarnings">Total Earnings: ₹0.00</p>
+        </div>
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="users.html"><i class="fas fa-users"></i> User Management</a>
+        <a href="recharge_management.html"><i class="fas fa-mobile-alt"></i> Recharge Management</a>
+        <a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="admin_settings.html" class="active"><i class="fas fa-cogs"></i> Settings</a>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <h2>Admin Settings</h2>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>Profile Settings</h3>
+                            <form id="profileForm">
+                                <div class="form-group">
+                                    <label for="adminNameInput">Admin Name</label>
+                                    <input type="text" class="form-control" id="adminNameInput" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminImage">Profile Image URL</label>
+                                    <input type="text" class="form-control" id="adminImage"
+                                        placeholder="e.g., https://example.com/image.jpg" onchange="previewImage()">
+                                    <img id="imagePreview" class="profile-image-preview" src="Asserts/prepaid(1).jpg"
+                                        alt="Preview" style="display: none;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminPassword">New Password</label>
+                                    <input type="password" class="form-control" id="adminPassword"
+                                        placeholder="Enter new password">
+                                </div>
+                                <button type="button" class="btn btn-success" onclick="saveProfile()">Save
+                                    Profile</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>System Settings</h3>
+                            <form id="systemForm">
+                                <div class="form-group">
+                                    <label for="currency">Currency</label>
+                                    <select class="form-control" id="currency">
+                                        <option value="INR">INR (₹)</option>
+                                        <option value="USD">USD ($)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="notifications">Notification Preference</label>
+                                    <select class="form-control" id="notifications">
+                                        <option value="email">Email</option>
+                                        <option value="sms">SMS</option>
+                                        <option value="both">Both</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-success" onclick="saveSystemSettings()">Save
+                                    Settings</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>System Status</h2>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-server"></i>
+                        <h5>Server Status</h5>
+                        <p id="serverStatus">Online</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-users"></i>
+                        <h5>Total Users</h5>
+                        <p id="totalUsers">0</p>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h5>Total Transactions</h5>
+                        <p id="totalTransactions">0</p>
+                    </div>
+
+                    <h2>Recent Activity</h2>
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <table class="table table-bordered activity-log-table mb-0" id="activityLogTable">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error/Success Message -->
+            <p id="message" class="text-center mt-3" style="display: none;"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.com/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Check admin authentication
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('userRole') || localStorage.getItem('userRole') !== 'admin') {
+                window.location.href = 'login.html';
+            } else {
+                loadAdminData();
+                loadSystemData();
+                updateStats();
+                updateActivityLog();
+            }
+        });
+
+        let allUsers = [];
+        let adminId = localStorage.getItem('userId') || 1; // Assuming admin is user ID 1
+        let activityLog = JSON.parse(localStorage.getItem('activityLog')) || [];
+
+        // Fetch user data from db.json and populate admin details
+        async function loadAdminData() {
+            try {
+                const usersResponse = await fetch('http://localhost:3000/users');
+                allUsers = await usersResponse.json();
+                const admin = allUsers.find(user => user.id == adminId && user.role === 'admin') || { name: 'Hari Priya', profileImage: 'Asserts/prepaid(1).jpg', earnings: 0 };
+                document.getElementById('adminName').textContent = admin.name;
+                document.getElementById('adminNameInput').value = admin.name;
+                document.getElementById('adminImage').value = admin.profileImage || 'Asserts/prepaid(1).jpg';
+                document.getElementById('sidebarImage').src = admin.profileImage || 'Asserts/prepaid(1).jpg';
+                document.getElementById('imagePreview').src = admin.profileImage || 'Asserts/prepaid(1).jpg';
+                document.getElementById('imagePreview').style.display = 'block';
+
+                // Use admin's earnings field if available, otherwise calculate from rechargeHistory
+                const totalEarnings = admin.earnings || admin.rechargeHistory.reduce((sum, recharge) => sum + recharge.amount, 0);
+                document.getElementById('totalEarnings').textContent = `Total Earnings: ₹${totalEarnings.toFixed(2)}`;
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                showMessage('Failed to load admin data.', 'danger');
+            }
+        }
+
+        // Load system settings (mocked from localStorage for simplicity)
+        function loadSystemData() {
+            const settings = JSON.parse(localStorage.getItem('systemSettings')) || { currency: 'INR', notifications: 'email' };
+            document.getElementById('currency').value = settings.currency;
+            document.getElementById('notifications').value = settings.notifications;
+        }
+
+        // Update system stats
+        function updateStats() {
+            document.getElementById('totalUsers').textContent = allUsers.length;
+            document.getElementById('totalTransactions').textContent = allUsers.reduce((sum, user) => sum + (user.rechargeHistory || []).length, 0);
+            document.getElementById('serverStatus').textContent = 'Online'; // Mocked status
+        }
+
+        // Update activity log (mocked from localStorage)
+        function updateActivityLog() {
+            const tbody = document.getElementById('activityLogTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            const recentActivity = activityLog.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+            recentActivity.forEach(log => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${log.action}</td>
+                    <td>${log.date}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Preview image
+        function previewImage() {
+            const url = document.getElementById('adminImage').value;
+            if (url) {
+                document.getElementById('imagePreview').src = url;
+                document.getElementById('imagePreview').style.display = 'block';
+            }
+        }
+
+        // Save profile settings
+        async function saveProfile() {
+            const admin = allUsers.find(user => user.id == adminId && user.role === 'admin');
+            if (!admin) return showMessage('Admin user not found.', 'danger');
+
+            const updatedAdmin = {
+                ...admin,
+                name: document.getElementById('adminNameInput').value,
+                profileImage: document.getElementById('adminImage').value || 'Asserts/prepaid(1).jpg'
+            };
+            const newPassword = document.getElementById('adminPassword').value;
+            if (newPassword) updatedAdmin.password = newPassword; // Assuming password field exists
+
+            try {
+                const response = await fetch(`http://localhost:3000/users/${adminId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedAdmin)
+                });
+                if (!response.ok) throw new Error('Failed to update profile');
+                allUsers = allUsers.map(u => u.id == adminId ? updatedAdmin : u);
+                document.getElementById('adminName').textContent = updatedAdmin.name;
+                document.getElementById('sidebarImage').src = updatedAdmin.profileImage;
+                document.getElementById('adminPassword').value = '';
+                addActivityLog('Updated profile settings');
+                showMessage('Profile updated successfully!', 'success');
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                showMessage('Failed to update profile.', 'danger');
+            }
+        }
+
+        // Save system settings
+        function saveSystemSettings() {
+            const settings = {
+                currency: document.getElementById('currency').value,
+                notifications: document.getElementById('notifications').value
+            };
+            localStorage.setItem('systemSettings', JSON.stringify(settings));
+            addActivityLog('Updated system settings');
+            showMessage('System settings saved successfully!', 'success');
+        }
+
+        // Add to activity log
+        function addActivityLog(action) {
+            const logEntry = { action, date: new Date().toISOString().split('T')[0] };
+            activityLog.unshift(logEntry);
+            if (activityLog.length > 10) activityLog.pop(); // Limit to 10 entries
+            localStorage.setItem('activityLog', JSON.stringify(activityLog));
+            updateActivityLog();
+        }
+
+        // Show success/error message
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `text-center mt-3 text-${type}`;
+            message.style.display = 'block';
+            setTimeout(() => message.style.display = 'none', 3000);
+        }
+    </script>
+</body>
+
+</html>
